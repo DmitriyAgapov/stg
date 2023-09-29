@@ -1,0 +1,491 @@
+{
+  "data": {
+    "sections": {
+      "screen": {
+        "header": "ИДЕАЛЬНАЯ ШУМОИЗОЛЯЦИЯ ДЛЯ КОМФОРТА В ВАШЕМ АВТО",
+        "class": "screen",
+        "shortText": "<p>Мы знаем все про то, как сделать ваш автомобиль максимально тихим и комфортным.</p>",
+        "media": {
+          "src": "./screen.webm"
+        },
+        "cards": [
+          {
+            "id": "card1",
+            "title": "Technik",
+            "style": " HOVER",
+            "image": {
+              "src": "/img/screenCardImg01.png",
+              "width":247,
+              "height": 128
+            },
+            "text": "Высокоэффективный многослойный материал нового поколения, созданный на основе газонаполненного полиэтилена.",
+            "link": "#"
+          },
+          {
+            "id": "card2",
+            "title": "Noise Сontrol",
+            "style": " HOVER",
+            "image": {
+              "src": "/img/screenCardImg02.png",
+              "width":247,
+              "height": 128
+            },
+            "text": "Эластичный самоклеящийся материал, состоящий из полимерного слоя, защищённого антиадгезионной плёнкой и алюминиевой фольгой с тиснением.",
+            "link": "#"
+          },
+          {
+            "id": "card3",
+            "title": "Deloud",
+            "style": " HOVER",
+            "image": {
+              "src": "/img/screenCardImg03.png",
+              "width":247,
+              "height": 128
+            },
+            "text": "Трёхслойная конструкция, состоящую из алюминиевой фольги с тиснением и полимерного слоя, защищённого антиадгезионной бумагой.",
+            "link": "#"
+          }
+        ]
+      },
+      "about": {
+        "header": "О компании",
+        "class": "about",
+        "shortText": "<p style={{columnCount: 2}}>ГК «Standart group» — это производственное предприятие, занимающееся производством и реализацией вибро-шумо-теплоизоляционных материалов с 2004 г. Полагаясь на собственные разработки и наработанный многолетний опыт, предприятие постоянно cовершенствует качество и ассортимент выпускаемой продукции. Основополагающими направления нашего развития, являются бесперебойные поставки выпускаемой продукции на авто nромnредnриятия, а также массмаркет.</p>",
+        "media": {
+          "src": "/img/img_lXlD3SCkYEkIyVdlxv3j 1.png",
+          "width": 1440,
+          "height": 872
+        },
+        "cards": [
+          {
+            "id": "card12",
+            "title": "Подробнее о компании",
+            "style": " about-card HOVER",
+            "link": "#"
+          },
+          {
+            "id": "card22",
+            "title": "Высокое качество продукции",
+            "style": " about-card ",
+            "image": {
+              "src": "/icons/quality.svg",
+              "width":100,
+              "height": 100
+            }
+          },
+          {
+            "id": "card23",
+            "title": "Гибкая ценовая политика",
+            "style": " about-card ",
+            "image": {
+              "src": "/icons/price.svg",
+              "width":78,
+              "height": 100
+            }
+          },
+          {
+            "id": "card24",
+            "title": "Быстрый документооборот и грамотная логистика",
+            "style": " about-card ",
+            "image": {
+              "src": "/icons/fast.svg",
+              "width":100,
+              "height": 100
+            }
+          },
+          {
+            "id": "card25",
+            "title": "Прямые поставки от производителя",
+            "style": " about-card ",
+            "image": {
+              "src": "/icons/fromprod.svg",
+              "width":100,
+              "height": 100
+            }
+          },
+          {
+            "id": "card26",
+            "title": "Стать представителем",
+            "style": " about-card HOVER",
+            "link": "#"
+          }
+        ]
+      },
+      "geography": {
+        "class": "geography",
+        "header": "География",
+        "shortText": "<p>Наша компания простирается по всей России, гарантируя, что мы всегда доступны для наших клиентов в любом регионе</p>",
+        "media": {
+          "src": "/img/map.png",
+          "width": 1440,
+          "height": 578
+        },
+        "cards": [
+          {
+            "id": "cardgeo1",
+            "title": "Охват партнёрской сети",
+            "style": " geography__card",
+            "text": "<p>10 000<sub>км</sub></p>"
+          },
+          {
+            "id": "cardgeo2",
+            "title": "Дилерская сеть насчитывает",
+            "style": " geography__card",
+            "text": "<p>70<sub>представителей</sub></p>"
+          }
+        ]
+      },
+      "products": {
+        "header": "Каталог Продукции",
+        "class": "products",
+        "shortText": "<p>Виброизоляция ГК «Standart Group» - это не только качественные материалы, но и уникальные технологии. При производстве виброизоляции на конечной её стадии используется тиснильнный вал с технологией «двойной квадрат». Это позволяет в автоматическом режиме избавиться полностью от воздушной прослойки между алюминиевой фольгой и мастичным слоем.</p>",
+        "cards": [
+
+          {
+            "id": "card1",
+            "title": "Technik",
+            "style": " HOVERS",
+            "image": {
+              "src": "/img/prod-tehnik.png",
+              "width":1440,
+              "height": 628
+            },
+            "text": "Высокоэффективный многослойный материал нового поколения, созданный на основе газонаполненного полиэтилена.",
+            "link": "#"
+          },
+          {
+            "id": "card2",
+            "title": "Noise Сontrol",
+            "style": " HOVERS",
+            "image": {
+              "src": "/img/prod-noise.png",
+              "width":1440,
+              "height": 628
+            },
+            "text": "Эластичный самоклеящийся материал, состоящий из полимерного слоя, защищённого антиадгезионной плёнкой и алюминиевой фольгой с тиснением.",
+            "link": "#"
+          },
+          {
+            "id": "card3",
+            "title": "Deloud",
+            "style": " HOVERS",
+            "image": {
+              "src": "/img/prod-deloud.png",
+              "width":1440,
+              "height": 628
+            },
+            "text": "Трёхслойная конструкция, состоящую из алюминиевой фольги с тиснением и полимерного слоя, защищённого антиадгезионной бумагой.",
+            "link": "#"
+          },
+          {
+            "id": "card4",
+            "title": "Промышленные материалы",
+            "style": " HOVERS",
+            "image": {
+              "src": "/img/prod-prom.png",
+              "width":1440,
+              "height": 628
+            },
+            "link": "#"
+          }
+        ]
+      },
+      "news": {
+        "class": "news",
+        "header": "Новости",
+        "cards": [
+          {
+            "id": "cardnews1",
+            "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
+            "style": " news__card",
+            "publishedTime": 1695980667921,
+            "slug": "/kollektiv-da123-cardnews1",
+            "image": {
+              "src": "/img/news/img_news_01.png",
+              "width": 418,
+              "height": 260
+            },
+            "tags": [
+              {
+                "text": "Акции",
+                "link": "/akcii"
+              },
+              {
+                "text": "События",
+                "link": "/actions"
+              }
+            ]
+          },
+          {
+            "id": "cardnews2",
+            "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
+            "style": " news__card",
+            "publishedTime": 1695980667923,
+            "slug": "/kollektiv-da123-cardnews1",
+            "image": {
+              "src": "/img/news/img_news_02.png",
+              "width": 418,
+              "height": 260
+            },
+            "tags": [
+              {
+                "text": "Акции",
+                "link": "/akcii"
+              },
+              {
+                "text": "События",
+                "link": "/actions"
+              }
+            ]
+          },
+          {
+            "id": "cardnews3",
+            "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
+            "style": " news__card",
+            "publishedTime": 1695980667925,
+            "slug": "/kollektiv-da123-cardnews1",
+            "image": {
+              "src": "/img/news/img_news_03.png",
+              "width": 418,
+              "height": 260
+            },
+            "tags": [
+              {
+                "text": "Акции",
+                "link": "/akcii"
+              },
+              {
+                "text": "События",
+                "link": "/actions"
+              }
+            ]
+          },
+          {
+            "id": "cardnews4",
+            "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
+            "style": " news__card",
+            "publishedTime": 1695980667921,
+            "slug": "/kollektiv-da123-cardnews1",
+            "image": {
+              "src": "/img/news/img_news_01.png",
+              "width": 418,
+              "height": 260
+            },
+            "tags": [
+              {
+                "text": "Акции",
+                "link": "/akcii"
+              },
+              {
+                "text": "События",
+                "link": "/actions"
+              }
+            ]
+          },
+          {
+            "id": "cardnews5",
+            "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
+            "style": " news__card",
+            "publishedTime": 1695980667923,
+            "slug": "/kollektiv-da123-cardnews1",
+            "image": {
+              "src": "/img/news/img_news_02.png",
+              "width": 418,
+              "height": 260
+            },
+            "tags": [
+              {
+                "text": "Акции",
+                "link": "/akcii"
+              },
+              {
+                "text": "События",
+                "link": "/actions"
+              }
+            ]
+          },
+          {
+            "id": "cardnews6",
+            "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
+            "style": " news__card",
+            "publishedTime": 1695980667925,
+            "slug": "/kollektiv-da123-cardnews1",
+            "image": {
+              "src": "/img/news/img_news_03.png",
+              "width": 418,
+              "height": 260
+            },
+            "tags": [
+              {
+                "text": "Акции",
+                "link": "/akcii"
+              },
+              {
+                "text": "События",
+                "link": "/actions"
+              }
+            ]
+          },
+          {
+            "id": "cardnews7",
+            "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
+            "style": " news__card",
+            "publishedTime": 1695980667921,
+            "slug": "/kollektiv-da123-cardnews1",
+            "image": {
+              "src": "/img/news/img_news_01.png",
+              "width": 418,
+              "height": 260
+            },
+            "tags": [
+              {
+                "text": "Акции",
+                "link": "/akcii"
+              },
+              {
+                "text": "События",
+                "link": "/actions"
+              }
+            ]
+          },
+          {
+            "id": "cardnews8",
+            "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
+            "style": " news__card",
+            "publishedTime": 1695980667923,
+            "slug": "/kollektiv-da123-cardnews1",
+            "image": {
+              "src": "/img/news/img_news_02.png",
+              "width": 418,
+              "height": 260
+            },
+            "tags": [
+              {
+                "text": "Акции",
+                "link": "/akcii"
+              },
+              {
+                "text": "События",
+                "link": "/actions"
+              }
+            ]
+          },
+          {
+            "id": "cardnews9",
+            "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
+            "style": " news__card",
+            "publishedTime": 1695980667925,
+            "slug": "/kollektiv-da123-cardnews1",
+            "image": {
+              "src": "/img/news/img_news_03.png",
+              "width": 418,
+              "height": 260
+            },
+            "tags": [
+              {
+                "text": "Акции",
+                "link": "/akcii"
+              },
+              {
+                "text": "События",
+                "link": "/actions"
+              }
+            ]
+          },
+          {
+            "id": "cardnews10",
+            "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
+            "style": " news__card",
+            "publishedTime": 1695980667921,
+            "slug": "/kollektiv-da123-cardnews1",
+            "image": {
+              "src": "/img/news/img_news_01.png",
+              "width": 418,
+              "height": 260
+            },
+            "tags": [
+              {
+                "text": "Акции",
+                "link": "/akcii"
+              },
+              {
+                "text": "События",
+                "link": "/actions"
+              }
+            ]
+          },
+          {
+            "id": "cardnews11",
+            "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
+            "style": " news__card",
+            "publishedTime": 1695980667923,
+            "slug": "/kollektiv-da123-cardnews1",
+            "image": {
+              "src": "/img/news/img_news_02.png",
+              "width": 418,
+              "height": 260
+            },
+            "tags": [
+              {
+                "text": "Акции",
+                "link": "/akcii"
+              },
+              {
+                "text": "События",
+                "link": "/actions"
+              }
+            ]
+          },
+          {
+            "id": "cardnews12",
+            "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
+            "style": " news__card",
+            "publishedTime": 1695980667925,
+            "slug": "/kollektiv-da123-cardnews1",
+            "image": {
+              "src": "/img/news/img_news_03.png",
+              "width": 418,
+              "height": 260
+            },
+            "tags": [
+              {
+                "text": "Акции",
+                "link": "/akcii"
+              },
+              {
+                "text": "События",
+                "link": "/actions"
+              }
+            ]
+          }
+        ],
+        "nav": {
+          "tags": [
+            {
+              "text": "Акции",
+              "link": "/akcii"
+            },
+            {
+              "text": "События",
+              "link": "/actions"
+            },
+            {
+              "text": "В мире автозвука",
+              "link": "/caraudio"
+            },
+            {
+              "text": "Новинки",
+              "link": "/akcii"
+            }
+          ],
+          "parentLink": {
+              "link": "/news",
+              "text": "Перейти в блог компании"
+          }
+        }
+      }
+
+
+    }
+  }
+}

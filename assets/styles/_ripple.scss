@@ -1,0 +1,192 @@
+@keyframes shake {
+  25% {
+	transform: rotate(calc(var(--angle) * -1));
+  }
+
+  50% {
+	transform: rotate(var(--angle));
+  }
+
+  100% {
+	transform: rotate(0deg);
+  }
+}
+
+@keyframes shakes {
+  25% {
+	transform: rotate(calc(var(--angle) * -1));
+  }
+
+  50% {
+	transform: rotate(var(--angle));
+  }
+
+  100% {
+	transform: rotate(0deg);
+  }
+}
+
+
+//Hover - section screen
+
+.HOVER {
+  --width: 100%;
+  --time: 0.7s;
+
+  position: relative;
+  display: inline-block;
+  //height: 1em;
+  padding: 1em;
+
+  color: white;
+  //background: #222;
+  overflow: hidden;
+}
+
+.HOVER .card__title, .HOVER .card__img {
+  position: relative;
+  z-index: 5;
+
+  transition: color var(--time);
+}
+.HOVER:hover .card__img {
+  img {
+    transition: opacity var(--time);
+    opacity: 1 !important;
+  }
+}
+.HOVER:hover .card__title {
+  color: white;
+}
+
+.HOVER span {
+  position: absolute;
+  display: block;
+  content: "";
+  z-index: 0;
+  width: 0;
+  height: 0;
+
+  border-radius: 100%;
+  background: #0C4191;
+
+  transform: translate(-50%, -50%);
+  transition: width var(--time), padding-top var(--time);
+}
+
+.HOVER:hover {
+  img {
+    opacity: 1;
+  }
+}
+.HOVER:hover span {
+  width: calc(var(--width) * 2.25);
+  padding-top: calc(var(--width) * 2.25);
+}
+
+.HOVER.FLASH:hover .card__title {
+  color: white;
+}
+
+.HOVER.FLASH span {
+  background: #ff3b3b;
+}
+
+.animated {
+  --angle: 5deg;
+  animation: shake 0.3s;
+}
+
+
+//HOVER - section products
+
+
+.HOVERS {
+  --width: 100%;
+  --time: 0.7s;
+
+  position: relative;
+  display: inline-block;
+  //height: 1em;
+  //padding: 1em;
+
+  color: white;
+  //background: #222;
+  overflow: hidden;
+  &:nth-child(4) {
+    --width: 60%;
+    position: static;
+    span {
+      left: 20%;
+      right: 20%;
+      width: 60%;
+      bottom: -75%;
+    }
+  }
+}
+
+
+.HOVERS .card__text {
+  opacity: 0;
+  transition: opacity var(--time) 0;
+}
+.HOVERS:hover .card__text {
+  opacity: 1;
+  transition: opacity var(--time) .25s;
+}
+.HOVERS .card__title {
+  position: relative;
+  z-index: 5;
+
+  transition: color var(--time);
+  svg {
+    transition: opacity var(--time);
+    opacity: 1;
+  }
+}
+
+.HOVERS:hover .card__title {
+  color: white !important;
+}
+
+.HOVERS span {
+  position: absolute;
+  display: block;
+  content: "";
+  z-index: 0;
+  width: 0;
+  height: 0;
+  left: 0;
+  right: 0;
+  border-radius: 100%;
+  background: #0C4191;
+
+  transform: translate(0, -40%);
+  transition: width var(--time), padding-top var(--time);
+
+}
+.HOVERS {
+  &:nth-child(4) span {
+    transform: translate(0, 20%);
+  }
+  &:nth-child(4):hover {
+  padding-top: calc(var(--width) * .75);
+  }
+}
+.HOVERS:hover span {
+  width: calc(var(--width));
+  padding-top: calc(var(--width));
+}
+
+.HOVERS.FLASH:hover .card__title {
+  color: white;
+}
+
+.HOVERS.FLASH span {
+  background: #ff3b3b;
+}
+
+.animateds {
+  --angle: 5deg;
+  animation: shake 0.7s;
+}

@@ -1,0 +1,32 @@
+.container {
+  padding: 7.5rem 0;
+  & > div:first-child {
+    grid-column: 2/span 4;
+    grid-row: 1/2;
+  }
+}
+.col {
+  h4 {
+    margin: 0 0 1.5rem;
+    color: #9CA3AF;
+    padding: 6px 0;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+    li {
+      margin: .625rem 0;
+      a {
+        @apply relative inline-flex font-semibold  items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-gray-950 no-underline hover:opacity-80 transition-opacity;
+        line-height: 1.5;
+
+      }
+    }
+  }
+}
+.sidebar {
+  display: flex;
+  justify-content: space-between;
+  grid-column: 6/-2;
+  grid-row: 1/2;
+}

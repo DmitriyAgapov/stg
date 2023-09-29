@@ -1,0 +1,31 @@
+.news__card {
+  display: grid;
+  gap: 2rem;
+  .card__img, .card__tags {
+    grid-row: 1/2;
+  }
+  .card__tags {
+    position: absolute;
+    padding: 1.25rem;
+  }
+  .card__date {
+    @apply text-secondary3;
+  }
+
+  .card__title {
+
+    font-size: 1rem;
+    font-weight: 600;
+    display: inline;
+
+    h4 {
+      display: inline;
+      @apply text-secondary3;
+      //border-bottom: 2px solid transparent;
+      &:hover {
+        border-color: #ffffff;
+        color: #ffffff;
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.container {
+	display: flex;
+	gap: .25rem;
+}
+
+.link {
+	@apply text-gray-500 font-bold;
+}
+
+.active {
+	@apply text-gray-900;
+}
+

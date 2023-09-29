@@ -1,0 +1,27 @@
+.container {
+	display: grid;
+	grid-template-columns: var(--grid);
+	gap: 0 var(--gridGap);
+
+  	> *:not([class^="inner_menu"]), > .container {
+		grid-column: 2/-2;
+
+
+	@media screen and (max-width: 1199px){
+		margin: 0;
+		max-width: 100%;
+		width: 100%;
+	}
+  }
+}
+.text {
+  display: block;
+  //font-size: 2rem;
+}
+.shortText {
+  display: block;
+  //font-size: 1rem;
+}
+.cards {
+	box-sizing: border-box;
+}
