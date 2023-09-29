@@ -5,7 +5,6 @@ import { pageQuery } from "@/utils/queries/pageQuery";
 import Section, { ProdSection } from "@/components/Section/Section";
 import dynamic from 'next/dynamic'
 import Card from "@/components/Cards/Card";
-import { GetServerSidePropsContext } from "next";
 import testData from '@/utils/testData.json'
 import { HeadingVariants } from "@/components/ui/Heading";
 import SideBar from "@/components/SideBar";
@@ -18,20 +17,7 @@ const VideoOnlyClient = dynamic((props) => import('@/components/Video'), {
     loading: () => <p>Loading...</p>,
 })
 
-function CardDate(props: { formatDate: any }) {
-    const formatDate = (val:number) => {
-        let newVal =  new Date(val).toLocaleString("ru-RU", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-        })
-        return <>{newVal}</>
-    }
-    const res = formatDate(props.formatDate)
-    return <div className={"card__date"}>{res}</div>;
-}
-
-export default function Home({page}:any) {
+export default function Home() {
     const {screen, about, products, geography, news} = testData.data.sections;
 
 
@@ -138,19 +124,19 @@ export default function Home({page}:any) {
     </>
   )
 }
-export async function getServerSideProps(ctx:GetServerSidePropsContext) {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
-
-  const data = await getData(pageQuery, ctx.locale, {
-    id: 3
-  } );
-
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-     ...data,
-    },
-  }
-}
+// export async function getServerSideProps(ctx:GetServerSidePropsContext) {
+//   // Call an external API endpoint to get posts.
+//   // You can use any data fetching library
+//   //
+//   // const data = await getData(pageQuery, ctx.locale, {
+//   //   id: 3
+//   // } );
+//
+//   // By returning { props: { posts } }, the Blog component
+//   // will receive `posts` as a prop at build time
+//   return {
+//     props: {
+//      ...data,
+//     },
+//   }
+// }
