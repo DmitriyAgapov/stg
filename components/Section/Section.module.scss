@@ -4,14 +4,12 @@
 	gap: 0 var(--gridGap);
 
   	> *:not([class^="inner_menu"]), > .container {
-		grid-column: 2/-2;
 
-
-	@media screen and (max-width: 1199px){
-		margin: 0;
-		max-width: 100%;
-		width: 100%;
-	}
+		@media screen and (max-width: 1199px){
+			margin: 0;
+			max-width: 100%;
+			width: 100%;
+		}
   }
 }
 .text {
@@ -24,4 +22,16 @@
 }
 .cards {
 	box-sizing: border-box;
+}
+.mainPage {
+  padding: 4rem 0;
+}
+.media {
+  box-sizing: border-box;
+}
+.mainProduct {
+  padding: 4rem 0;
+  display: grid;
+  grid-template-columns: var(--grid);
+  gap: 0 var(--gridGap);
 }

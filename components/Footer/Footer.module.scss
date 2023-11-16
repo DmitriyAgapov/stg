@@ -1,9 +1,11 @@
 .container {
-  padding: 7.5rem 0;
+  padding: 4rem 0 2.5rem;
   & > div:first-child {
     grid-column: 2/span 4;
     grid-row: 1/2;
   }
+  border-top: 4px solid;
+  @apply border-primary;
 }
 .col {
   h4 {

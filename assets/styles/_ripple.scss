@@ -162,7 +162,7 @@
   background: #0C4191;
 
   transform: translate(0, -40%);
-  transition: width var(--time), padding-top var(--time);
+  transition: width var(--time) .25s, padding-top var(--time) .25s;
 
 }
 .HOVERS {

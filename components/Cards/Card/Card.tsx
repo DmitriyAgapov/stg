@@ -1,6 +1,6 @@
 import styles from './Card.module.css';
 import NextLink from "next/link";
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { configStore } from "@/store/configStore";
 import Image, { StaticImageData } from "next/image";
 import { useStore } from "@/store";
@@ -8,27 +8,61 @@ import books, { imageBgProps } from "@/store/Books";
 import { observer } from "mobx-react-lite";
 import { ArrowRightSvg } from "@/components/Icons";
 import Heading, { HeadingVariants } from "@/components/ui/Heading";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import Blocks from "editorjs-blocks-react-renderer";
+import { I18NConfig } from "next/dist/server/config-shared";
+import TextBlockRenderer from "@/components/ui/TextBlockRenderer/TextBlockRenderer";
+import ImageBlock from "@/components/ui/ImageBlock";
+export interface ImageDefault  {
 
+	id?: string
+
+	width: number
+	height: number
+	url?: string
+	src?: string
+
+
+}
 export interface CardParams {
-	image?: ReactNode | imageBgProps
+	image?: StaticImport | string | imageBgProps | undefined | null | ReactNode
+	imglogo?: ReactNode | imageBgProps | StaticImport
 	link?: string;
-	text?: string;
+	text?: string | any;
 	style?: string;
 	title?: string ;
-	img?: ReactNode | imageBgProps
+	img?:  ImageDefault | undefined
 	children?: ReactNode | imageBgProps
 	action?: any
 	mousePath?: boolean
-	key?: string
+	locale?: string
 	id?: string
-	headingVariant?: HeadingVariants
+	headingVariant?:  HeadingVariants
+}
+export interface ProductCard extends CardParams {
+	series?: {
+		title: string,
+		slug: string,
+		id: string,
+		type: string,
+		images: {
+			data: {attributes: {
+					url: string,
+					width: number,
+					height: number
+				}}[]
+
+		}
+	} | any
+	properties: any
 }
 
-
-const Card = observer(({title, headingVariant = HeadingVariants.h2, mousePath = true, key, text, style, img, link, action, ...props }: CardParams) => {
+const Card = observer(({id, title, headingVariant = HeadingVariants.h2, mousePath = true,  text, style, img, link, action = false, imglogo, ...props }: CardParams) => {
 	let store = useStore()
+	// console.log('222', process.env.NEXT_PUBLIC_BACK_URL + img?.data?.attributes.url)
 	const handleAnimation = (event: React.MouseEvent<HTMLDivElement>) => {
 		const ANIMATEDCLASSNAME = "animated";
+
 
 		let addAnimation = false;
 		const element = event.target;
@@ -66,30 +100,45 @@ const Card = observer(({title, headingVariant = HeadingVariants.h2, mousePath = 
 			}
 		}
 	}
-
-	return <div className={styles.container + " " + 'card' + style} onMouseLeave={() => store.booksStore.setImageBg(null)}  onMouseOver={() => store.booksStore.setImageBg(img)} onMouseEnter={(event) => handleAnimation(event)}>
+	// @ts-ignore
+	return <div className={styles.container + " " + 'card' + style}   onMouseLeave={() => {
+		// console.log('over')
+		store.booksStore.setActveImageBgIndex("")
+	}} onMouseEnter={(event) => {
+		// @ts-ignore
+		action && store.booksStore.setActveImageBgIndex(img.id)
+		handleAnimation(event)
+	}}>
 		<span></span>
 		{link ? <NextLink className={'card__title'} href={link}>
-			<Heading type={headingVariant}>{title}</Heading>
+			<Heading type={headingVariant} text={title}/>
 			<ArrowRightSvg />
-		</NextLink> : 	<Heading type={headingVariant}  className={'card__title'}>{title}</Heading>}
-		{text &&
-			(text[0] === '<') ? <div className={'card__text'} dangerouslySetInnerHTML={{ __html: text}}/> : text && <div className={'card__text'}>{text}</div>
-		}
+		</NextLink> : title && <Heading type={headingVariant}  className={'card__title'} text={title}/>}
+		{text && <div className={'card__text'}><Blocks data={JSON.parse(text)}/></div>}
+
 
 		{/*{img && <div className={'card__img'}>{img}</div>}*/}
-		{img && (
+		{img && img.url && (
 			// @ts-ignore
-			img.src && <div className={'card__img'}>
+			img.url && <div className={'card__img'}>
 			<Image
 				// @ts-ignore
-				src={img.src} width={img.width} height={img.height} alt={''} />
+				src={process.env.NEXT_PUBLIC_BACK_URL + img.url} width={img.width} height={img.height} alt={''} />
 		</div>)}
-		{props.children && props.children}
+		{imglogo && (
+			// @ts-ignore
+			imglogo.url && <div className={'card__imglogo absolute top-0 bottom-4 flex right-4'}>
+			<Image
+				// @ts-ignore
+				className={'relative my-auto'} src={process.env.NEXT_PUBLIC_BACK_URL + imglogo.url} width={imglogo.width} height={imglogo.height} alt={''} />
+		</div>)}
+
+
+		{/*{props.children && props.children}*/}
 
 	</div> ;
 })
-export const CardNews = ({title, headingVariant = HeadingVariants.h2, mousePath = true, key, text, style, img, link, action, ...props } :CardParams) => {
+export const CardNews = ({title, headingVariant = HeadingVariants.h2, mousePath = true,  text, style, img, link, action, ...props } :CardParams) => {
 
 	if (text != null) {
 		console.log(text[0] === '<')
@@ -97,20 +146,17 @@ export const CardNews = ({title, headingVariant = HeadingVariants.h2, mousePath 
 	return <div className={styles.container + " " + 'card' + style}>
 
 		{link && <NextLink className={'card__title'} href={link}>
-			<Heading type={headingVariant}>{title}</Heading>
+			<Heading type={headingVariant} text={title} />
 
 		</NextLink>}
 		{text &&
-			(text[0] === '<') ? <div className={'card__text'} dangerouslySetInnerHTML={{ __html: text}}/> : text && <div className={'card__text'}>{text}</div>
+			<div className={'card__text'}><TextBlockRenderer text={text}/></div>
 		}
 
 		{/*{img && <div className={'card__img'}>{img}</div>}*/}
 		{img && (
-			// @ts-ignore
-			img.src && <div className={'card__img'}>
-			<Image
-				// @ts-ignore
-				src={img.src} width={img.width} height={img.height} alt={''} />
+			img.url && <div className={'card__img'}>
+			<ImageBlock src={img.url} width={img.width} height={img.height} alt={''} />
 		</div>)}
 		{props.children && props.children}
 

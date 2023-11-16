@@ -15,7 +15,7 @@
             "style": " HOVER",
             "image": {
               "src": "/img/screenCardImg01.png",
-              "width":247,
+              "width": 247,
               "height": 128
             },
             "text": "Высокоэффективный многослойный материал нового поколения, созданный на основе газонаполненного полиэтилена.",
@@ -27,7 +27,7 @@
             "style": " HOVER",
             "image": {
               "src": "/img/screenCardImg02.png",
-              "width":247,
+              "width": 247,
               "height": 128
             },
             "text": "Эластичный самоклеящийся материал, состоящий из полимерного слоя, защищённого антиадгезионной плёнкой и алюминиевой фольгой с тиснением.",
@@ -39,7 +39,7 @@
             "style": " HOVER",
             "image": {
               "src": "/img/screenCardImg03.png",
-              "width":247,
+              "width": 247,
               "height": 128
             },
             "text": "Трёхслойная конструкция, состоящую из алюминиевой фольги с тиснением и полимерного слоя, защищённого антиадгезионной бумагой.",
@@ -68,8 +68,9 @@
             "title": "Высокое качество продукции",
             "style": " about-card ",
             "image": {
+              "id": "card22-img",
               "src": "/icons/quality.svg",
-              "width":100,
+              "width": 100,
               "height": 100
             }
           },
@@ -78,8 +79,9 @@
             "title": "Гибкая ценовая политика",
             "style": " about-card ",
             "image": {
+              "id": "card23-img",
               "src": "/icons/price.svg",
-              "width":78,
+              "width": 78,
               "height": 100
             }
           },
@@ -88,8 +90,9 @@
             "title": "Быстрый документооборот и грамотная логистика",
             "style": " about-card ",
             "image": {
+              "id": "card24-img",
               "src": "/icons/fast.svg",
-              "width":100,
+              "width": 100,
               "height": 100
             }
           },
@@ -98,8 +101,9 @@
             "title": "Прямые поставки от производителя",
             "style": " about-card ",
             "image": {
+              "id": "card25-img",
               "src": "/icons/fromprod.svg",
-              "width":100,
+              "width": 100,
               "height": 100
             }
           },
@@ -140,14 +144,14 @@
         "class": "products",
         "shortText": "<p>Виброизоляция ГК «Standart Group» - это не только качественные материалы, но и уникальные технологии. При производстве виброизоляции на конечной её стадии используется тиснильнный вал с технологией «двойной квадрат». Это позволяет в автоматическом режиме избавиться полностью от воздушной прослойки между алюминиевой фольгой и мастичным слоем.</p>",
         "cards": [
-
           {
             "id": "card1",
             "title": "Technik",
             "style": " HOVERS",
             "image": {
+              "id": "card1-img",
               "src": "/img/prod-tehnik.png",
-              "width":1440,
+              "width": 1440,
               "height": 628
             },
             "text": "Высокоэффективный многослойный материал нового поколения, созданный на основе газонаполненного полиэтилена.",
@@ -155,11 +159,13 @@
           },
           {
             "id": "card2",
+
             "title": "Noise Сontrol",
             "style": " HOVERS",
             "image": {
+              "id": "card2-img",
               "src": "/img/prod-noise.png",
-              "width":1440,
+              "width": 1440,
               "height": 628
             },
             "text": "Эластичный самоклеящийся материал, состоящий из полимерного слоя, защищённого антиадгезионной плёнкой и алюминиевой фольгой с тиснением.",
@@ -170,8 +176,9 @@
             "title": "Deloud",
             "style": " HOVERS",
             "image": {
+              "id": "card3-img",
               "src": "/img/prod-deloud.png",
-              "width":1440,
+              "width": 1440,
               "height": 628
             },
             "text": "Трёхслойная конструкция, состоящую из алюминиевой фольги с тиснением и полимерного слоя, защищённого антиадгезионной бумагой.",
@@ -182,8 +189,9 @@
             "title": "Промышленные материалы",
             "style": " HOVERS",
             "image": {
+              "id": "card4-img",
               "src": "/img/prod-prom.png",
-              "width":1440,
+              "width": 1440,
               "height": 628
             },
             "link": "#"
@@ -199,6 +207,7 @@
             "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
             "style": " news__card",
             "publishedTime": 1695980667921,
+            "text": "<p>Представляем материал из линейки премиум материалов Deloud Demfer! Уникальность Deloud Demfer - в толщине фольги, которая составляет 120 микрон и не имеет аналогов на нашем рынке. Deloud Demfer создан для серьёзных SPL — проектов.</p>",
             "slug": "/kollektiv-da123-cardnews1",
             "image": {
               "src": "/img/news/img_news_01.png",
@@ -220,6 +229,7 @@
             "id": "cardnews2",
             "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
             "style": " news__card",
+            "text": "<p>Представляем материал из линейки премиум материалов Deloud Demfer! Уникальность Deloud Demfer - в толщине фольги, которая составляет 120 микрон и не имеет аналогов на нашем рынке. Deloud Demfer создан для серьёзных SPL — проектов.</p>",
             "publishedTime": 1695980667923,
             "slug": "/kollektiv-da123-cardnews1",
             "image": {
@@ -243,6 +253,7 @@
             "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
             "style": " news__card",
             "publishedTime": 1695980667925,
+            "text": "<p>Представляем материал из линейки премиум материалов Deloud Demfer! Уникальность Deloud Demfer - в толщине фольги, которая составляет 120 микрон и не имеет аналогов на нашем рынке. Deloud Demfer создан для серьёзных SPL — проектов.</p>",
             "slug": "/kollektiv-da123-cardnews1",
             "image": {
               "src": "/img/news/img_news_03.png",
@@ -265,7 +276,7 @@
             "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
             "style": " news__card",
             "publishedTime": 1695980667921,
-            "slug": "/kollektiv-da123-cardnews1",
+            "slug": "/kollektiv-da123-cardnews1","text": "<p>Представляем материал из линейки премиум материалов Deloud Demfer! Уникальность Deloud Demfer - в толщине фольги, которая составляет 120 микрон и не имеет аналогов на нашем рынке. Deloud Demfer создан для серьёзных SPL — проектов.</p>",
             "image": {
               "src": "/img/news/img_news_01.png",
               "width": 418,
@@ -287,7 +298,7 @@
             "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
             "style": " news__card",
             "publishedTime": 1695980667923,
-            "slug": "/kollektiv-da123-cardnews1",
+            "slug": "/kollektiv-da123-cardnews1","text": "<p>Представляем материал из линейки премиум материалов Deloud Demfer! Уникальность Deloud Demfer - в толщине фольги, которая составляет 120 микрон и не имеет аналогов на нашем рынке. Deloud Demfer создан для серьёзных SPL — проектов.</p>",
             "image": {
               "src": "/img/news/img_news_02.png",
               "width": 418,
@@ -309,7 +320,7 @@
             "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
             "style": " news__card",
             "publishedTime": 1695980667925,
-            "slug": "/kollektiv-da123-cardnews1",
+            "slug": "/kollektiv-da123-cardnews1","text": "<p>Представляем материал из линейки премиум материалов Deloud Demfer! Уникальность Deloud Demfer - в толщине фольги, которая составляет 120 микрон и не имеет аналогов на нашем рынке. Deloud Demfer создан для серьёзных SPL — проектов.</p>",
             "image": {
               "src": "/img/news/img_news_03.png",
               "width": 418,
@@ -330,8 +341,8 @@
             "id": "cardnews7",
             "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
             "style": " news__card",
-            "publishedTime": 1695980667921,
-            "slug": "/kollektiv-da123-cardnews1",
+            "publishedTime": 1695980667921,"text": "<p>Представляем материал из линейки премиум материалов Deloud Demfer! Уникальность Deloud Demfer - в толщине фольги, которая составляет 120 микрон и не имеет аналогов на нашем рынке. Deloud Demfer создан для серьёзных SPL — проектов.</p>",
+            "slug": "/kollektiv-da123-cardnews2",
             "image": {
               "src": "/img/news/img_news_01.png",
               "width": 418,
@@ -479,13 +490,1670 @@
             }
           ],
           "parentLink": {
-              "link": "/news",
-              "text": "Перейти в блог компании"
+            "link": "/news",
+            "text": "Перейти в блог компании"
           }
         }
       }
+    },
+    "page": {
+      "catalog": {
+        "cards": [
+          {
+            "id": "card12213",
+            "title": "Technik",
+            "style": " HOVER",
+            "image": {
+              "src": "/img/prod-tehnik.png",
+              "width": 1440,
+              "height": 628,
+              "id": "sadsad1"
+            },
+            "imglogo": {
+              "src": "/img/screenCardImg01.png",
+              "width": 247,
+              "height": 128
+            },
+            "text": "Высокоэффективный многослойный материал нового поколения, созданный на основе газонаполненного полиэтилена.",
+            "link": "#"
+          },
+          {
+            "id": "card32132132",
+            "title": "Noise Сontrol",
+            "style": " HOVER",
+            "image": {
+              "id": "sadsad",
+              "src": "/img/prod-noise.png",
+              "width": 1440,
+              "height": 628
+            },
+            "imglogo": {
+              "src": "/img/screenCardImg02.png",
+              "width": 247,
+              "height": 128
+            },
+            "text": "Эластичный самоклеящийся материал, состоящий из полимерного слоя, защищённого антиадгезионной плёнкой и алюминиевой фольгой с тиснением.",
+            "link": "#"
+          },
+          {
+            "id": "card33331231",
+            "title": "Deloud",
+            "style": " HOVER",
+            "image": {
+              "src": "/img/prod-deloud.png",
+              "width": 1440,
+              "height": 628,
+              "id": "saddddsad"
+            },
+            "imglogo": {
+              "src": "/img/screenCardImg03.png",
+              "width": 247,
+              "height": 128
+            },
+            "text": "Трёхслойная конструкция, состоящую из алюминиевой фольги с тиснением и полимерного слоя, защищённого антиадгезионной бумагой.",
+            "link": "#"
+          },
+          {
+            "id": "card442134",
+            "title": "Промышленные материалы",
+            "style": " HOVER",
+            "image": {
+              "src": "/img/prod-prom.png",
+              "id": "sadsavxcvgd",
+              "width": 1440,
+              "height": 628
+            },
+            "link": "#"
+          }
+        ]
+      },
+      "catalog-category": {
+        "header": "Шумоизоляция",
+        "id": "shumoizolyacia321312",
+        "slug": "shumoizolyacia",
+        "items": [
+          {
+            "id": "prod_card_1",
+            "title": "AirMax",
+            "slug": "airmax",
+            "series": {
+              "title": "deloud",
+              "slug": "deloud",
+              "id": "324234gfdfgd",
+              "type": "Premium",
+              "image": {
+                "src": "/img/screenCardImg02.png",
+                "width": 202,
+                "height": 115
+              }
+            },
+            "style": " product__card",
+            "properties": [
+              {
+                "id": "prodprops3",
+                "heading": "Толщина",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops3",
+                "heading": "Листов в упаковке",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops3",
+                "heading": "Площадь",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops4",
+                "heading": "Место применения",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "Крыша"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "Арки"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "Пол"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "Багажник"
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              }
+            ]
+          },
+          {
+            "id": "prod_card_12",
+            "title": "AirMax",
+            "slug": "airmax",
+            "description": "<p>АiгМах — ультралегкий, самоклеящийся вибродемпфер нового поколения премиальной линейки «Deloud». Разработан с применением новых технологии и инновационных компонентов. При разработке удалось доб иться значитель ного снижения веса, п орядка 35%, при этом увеличив эффективность и улучшив\u2028характеристики.</p>",
+            "series": {
+              "title": "deloud",
+              "slug": "deloud",
+              "id": "324234gfdfgd",
+              "type": "Premium",
+              "image": {
+                "src": "/img/screenCardImg03.png",
+                "width": 202,
+                "height": 115
+              }
+            },
+            "style": " product__card",
+            "properties": [
+              {
+                "id": "prodprops3",
+                "heading": "Толщина",
+                "type": "checkbox_inset",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops4",
+                "heading": "Место применения",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "Крыша"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "Арки"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "Пол"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "Багажник"
+                  }
+                ]
+              }, {
+                "id": "prodprops3",
+                "heading": "Листов в упаковке",
+                "type": "checkbox_inset",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "7"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "10"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "5"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "3"
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "/img/products/1.png",
+                "width": 600,
+                "height": 480
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 600,
+                "height": 480
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 600,
+                "height": 480
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 600,
+                "height": 480
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 600,
+                "height": 480
+              }
+            ]
+          },
+
+          {
+            "id": "prod_card_1",
+            "title": "AirMax",
+            "slug": "airmax",
+            "series": {
+              "title": "deloud",
+              "slug": "deloud",
+              "id": "324234gfdfgd",
+              "type": "Premium",
+              "image": {
+                "src": "/img/screenCardImg01.png",
+                "width": 202,
+                "height": 115
+              }
+            },
+            "style": " product__card",
+            "properties": [
+              {
+                "id": "prodprops3",
+                "heading": "Толщина",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops4",
+                "heading": "Место применения",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "Крыша"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "Арки"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "Пол"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "Багажник"
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              }
+            ]
+          },
+          {
+            "id": "prod_card_1",
+            "title": "AirMax",
+            "slug": "airmax",
+            "series": {
+              "title": "deloud",
+              "slug": "deloud",
+              "id": "324234gfdfgd",
+              "type": "Premium",
+              "image": {
+                "src": "/img/screenCardImg03.png",
+                "width": 202,
+                "height": 115
+              }
+            },
+            "style": " product__card",
+            "properties": [
+              {
+                "id": "prodprops3",
+                "heading": "Толщина",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops4",
+                "heading": "Место применения",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "Крыша"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "Арки"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "Пол"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "Багажник"
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              }
+            ]
+          },
+          {
+            "id": "prod_card_1",
+            "title": "AirMax",
+            "slug": "airmax",
+            "series": {
+              "title": "deloud",
+              "slug": "deloud",
+              "id": "324234gfdfgd",
+              "type": "Premium",
+              "image": {
+                "src": "/img/screenCardImg03.png",
+                "width": 202,
+                "height": 115
+              }
+            },
+            "style": " product__card",
+            "properties": [
+              {
+                "id": "prodprops3",
+                "heading": "Толщина",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops4",
+                "heading": "Место применения",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "Крыша"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "Арки"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "Пол"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "Багажник"
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              }
+            ]
+          },
+          {
+            "id": "prod_card_1",
+            "title": "AirMax",
+            "slug": "airmax",
+            "series": {
+              "title": "deloud",
+              "slug": "deloud",
+              "id": "324234gfdfgd",
+              "type": "Premium",
+              "image": {
+                "src": "/img/screenCardImg03.png",
+                "width": 202,
+                "height": 115
+              }
+            },
+            "style": " product__card",
+            "properties": [
+              {
+                "id": "prodprops3",
+                "heading": "Толщина",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops4",
+                "heading": "Место применения",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "Крыша"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "Арки"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "Пол"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "Багажник"
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              }
+            ]
+          },
+          {
+            "id": "prod_card_1",
+            "title": "AirMax",
+            "slug": "airmax",
+            "series": {
+              "title": "deloud",
+              "slug": "deloud",
+              "id": "324234gfdfgd",
+              "type": "Premium",
+              "image": {
+                "src": "/img/screenCardImg03.png",
+                "width": 202,
+                "height": 115
+              }
+            },
+            "style": " product__card",
+            "properties": [
+              {
+                "id": "prodprops3",
+                "heading": "Толщина",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops4",
+                "heading": "Место применения",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "Крыша"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "Арки"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "Пол"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "Багажник"
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              }
+            ]
+          },
+          {
+            "id": "prod_card_1",
+            "title": "AirMax",
+            "slug": "airmax",
+            "series": {
+              "title": "deloud",
+              "slug": "deloud",
+              "id": "324234gfdfgd",
+              "type": "Premium",
+              "image": {
+                "src": "/img/screenCardImg03.png",
+                "width": 202,
+                "height": 115
+              }
+            },
+            "style": " product__card",
+            "properties": [
+              {
+                "id": "prodprops3",
+                "heading": "Толщина",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops4",
+                "heading": "Место применения",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "Крыша"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "Арки"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "Пол"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "Багажник"
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              }
+            ]
+          },
+          {
+            "id": "prod_card_1",
+            "title": "AirMax",
+            "slug": "airmax",
+            "series": {
+              "title": "deloud",
+              "slug": "deloud",
+              "id": "324234gfdfgd",
+              "type": "Premium",
+              "image": {
+                "src": "/img/screenCardImg03.png",
+                "width": 202,
+                "height": 115
+              }
+            },
+            "style": " product__card",
+            "properties": [
+              {
+                "id": "prodprops3",
+                "heading": "Толщина",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops4",
+                "heading": "Место применения",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "Крыша"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "Арки"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "Пол"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "Багажник"
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              }
+            ]
+          },
+          {
+            "id": "prod_card_1",
+            "title": "AirMax",
+            "slug": "airmax",
+            "series": {
+              "title": "deloud",
+              "slug": "deloud",
+              "id": "324234gfdfgd",
+              "type": "Premium",
+              "image": {
+                "src": "/img/screenCardImg03.png",
+                "width": 202,
+                "height": 115
+              }
+            },
+            "style": " product__card",
+            "properties": [
+              {
+                "id": "prodprops3",
+                "heading": "Толщина",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops4",
+                "heading": "Место применения",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "Крыша"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "Арки"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "Пол"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "Багажник"
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              }
+            ]
+          },
+          {
+            "id": "prod_card_1",
+            "title": "AirMax",
+            "slug": "airmax",
+            "series": {
+              "title": "deloud",
+              "slug": "deloud",
+              "id": "324234gfdfgd",
+              "type": "Premium",
+              "image": {
+                "src": "/img/screenCardImg03.png",
+                "width": 202,
+                "height": 115
+              }
+            },
+            "style": " product__card",
+            "properties": [
+              {
+                "id": "prodprops3",
+                "heading": "Размер",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "500*700"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops3",
+                "heading": "Толщина",
+                "type": "checkbox_inset",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops4",
+                "heading": "Место применения",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "Крыша"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "Арки"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "Пол"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "Багажник"
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              }
+            ]
+          },
+          {
+            "id": "prod_card_1",
+            "title": "AirMax",
+            "slug": "airmax",
+            "series": {
+              "title": "deloud",
+              "slug": "deloud",
+              "id": "324234gfdfgd",
+              "type": "Premium",
+              "image": {
+                "src": "/img/screenCardImg03.png",
+                "width": 202,
+                "height": 115
+              }
+            },
+            "style": " product__card",
+            "properties": [
+              {
+                "id": "prodprops3",
+                "heading": "Толщина",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops4",
+                "heading": "Место применения",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "Крыша"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "Арки"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "Пол"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "Багажник"
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              }
+            ]
+          },
+          {
+            "id": "prod_card_1",
+            "title": "AirMax",
+            "slug": "airmax",
+            "series": {
+              "title": "deloud",
+              "slug": "deloud",
+              "id": "324234gfdfgd",
+              "type": "Premium",
+              "image": {
+                "src": "/img/screenCardImg03.png",
+                "width": 202,
+                "height": 115
+              }
+            },
+            "style": " product__card",
+            "properties": [
+              {
+                "id": "prodprops3",
+                "heading": "Толщина",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "1,5"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "2"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "3"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "4"
+                  }
+                ]
+              },
+              {
+                "id": "prodprops4",
+                "heading": "Место применения",
+                "propslist": [
+                  {
+                    "id": "menu-top1534354",
+                    "text": "Крыша"
+                  },
+                  {
+                    "id": "menu-top154343524",
+                    "text": "Арки"
+                  },
+                  {
+                    "id": "menu-top1534432444354",
+                    "text": "Пол"
+                  },
+                  {
+                    "id": "menu-top15344332354",
+                    "text": "Багажник"
+                  }
+                ]
+              }
+            ],
+            "images": [
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              },
+              {
+                "src": "/img/products/1.png",
+                "width": 280,
+                "height": 233
+              }
+            ]
+          }
+
+        ]
+      },
+      "contacts": {
+        "header": "Контакты",
+        "id": "cons321312",
+        "slug": "contacts",
+        "items": [
+          {
+            "id": "contacts_item_card_1",
+            "title": "Телефоны",
+            "style": " contacts_item",
+            "properties": [
+              {
+                "id": "phone1",
+                "heading": "+7 (3513) 25-00-82"
+              },
+              {
+                "id": "phone3",
+                "heading": "+7 (3513) 25-00-83"
+              },
+              {
+                "id": "phone2",
+                "heading": "+7 (3513) 25-00-84"
+              }
+            ]
+
+          },
+          {
+            "id": "contacts_item_card_2",
+            "title": "Email",
+            "style": " contacts_item",
+            "properties": [
+              {
+                "id": "email1",
+                "heading": "info@standart-ural.ru"
+              }
+            ]
+
+          },
+          {
+            "id": "contacts_item_card_3",
+            "title": "Address",
+            "style": " contacts_item",
+            "properties": [
+              {
+                "id": "adr1",
+                "heading": "456300 Челябинская область, г. Миасс Тургоякское шоссе, 2/25"
+              }
+            ]
+
+          }
+        ]
+      }
+    },
+    "menu": {
+      "top": [
+        {
+          "id": "menu-top1",
+          "heading": "Назначение",
+          "menuItems": [
+            {
+              "id": "menu-top221",
+              "text": "Шумоизоляция",
+              "link": "shumoizolyacia"
+            },
+            {
+              "id": "menu-top221",
+              "text": "Шумоизоляция",
+              "link": "shumoizolyacia"
+            },
+            {
+              "id": "menu-top1444",
+              "text": "Виброизоляция",
+              "link": "vibroiizolyacia"
+            },
+            {
+              "id": "menu-top5551",
+              "text": "Теплоизоляция",
+              "link": "teploizolyacia"
+            }
+          ]
+        },
+        {
+          "id": "menu-top2",
+          "heading": "Серия",
+          "menuItems": [
+            {
+              "id": "menu-top1534354",
+              "text": "Technik",
+              "link": "/series/technik"
+            },
+            {
+              "id": "menu-top15434354",
+              "text": "Noise Control",
+              "link": "/series/noise-control"
+            },
+            {
+              "id": "menu-top15344354",
+              "text": "DeLoud",
+              "link": "/series/deloud"
+            }
+          ]
+        }
+      ]
+    },
+    "production-props": [
+      {
+        "title": "Категория",
+        "id": "prodprops1",
+        "type": "links",
+        "menuItems": [
+          {
+            "id": "menu-top221",
+            "text": "Шумоизоляция",
+            "link": "/shumoizolyacia",
+            "slug": "/shumoizolyacia"
+          },
+          {
+            "id": "menu-top1444",
+            "text": "Виброизоляция",
+            "link": "/vibroiizolyacia",
+            "slug": "/vibroiizolyacia"
+          },
+          {
+            "id": "menu-top5551",
+            "text": "Теплоизоляция",
+            "link": "/teploizolyacia",
+            "slug": "/teploizolyacia"
+          }
+        ]
+      },
+      {
+        "id": "prodprops2",
+        "title": "Серия",
+        "type": "radio",
+        "menuItems": [
+          {
+            "id": "menu-top1534354",
+            "text": "Technik",
+            "link": "/tehnik",
+            "slug": "/tehnik"
+          },
+          {
+            "id": "menu-top15434354",
+            "text": "Noise Control",
+            "link": "/noise-control",
+            "slug": "/noise-control"
+          },
+          {
+            "id": "menu-top15344354",
+            "text": "DeLoud",
+            "link": "/deloud",
+            "slug": "/deloud"
+          }
+        ]
+      },
+      {
+        "id": "prodprops3",
+        "title": "Толщина",
+        "type": "checkbox_inset",
+        "menuItems": [
+          {
+            "id": "menu-top1534354",
+            "text": "1,5"
+          },
+          {
+            "id": "menu-top154343524",
+            "text": "2"
+          },
+          {
+            "id": "menu-top1534432444354",
+            "text": "3"
+          },
+          {
+            "id": "menu-top15344332354",
+            "text": "4"
+          }
+        ]
+      },
+      {
+        "id": "prodprops4",
+        "title": "Место применения",
+        "type": "checkbox",
+        "menuItems": [
+          {
+            "id": "menu-top1534354",
+            "text": "Крыша"
+          },
+          {
+            "id": "menu-top154343524",
+            "text": "Арки"
+          },
+          {
+            "id": "menu-top1534432444354",
+            "text": "Пол"
+          },
+          {
+            "id": "menu-top15344332354",
+            "text": "Багажник"
+          }
+        ]
+      }
+    ],
+    "series": [
+      {
+        "header": "Deloud",
+        "class": "series-screen",
+        "shortText": "<p>Трёхслойная конструкция, состоящую из алюминиевой фольги с тиснением и полимерного слоя, защищённого антиадгезионной бумагой.</p>",
+        "image": {
+          "src": "/img/series/deloud.webp",
+          "width": 3725,
+          "height": 2817
+        },
+        "cards": [
+          {
+            "id": "card1",
+            "title": "Premium класс",
+            "style": " feature-series",
+            "image": {
+              "src": "/icons/series/prem.svg",
+              "width": 32,
+              "height": 32
+            }
+          },
+          {
+            "id": "card3",
+            "title": "Современный дизайн",
+            "style": " feature-series",
+            "image": {
+              "src": "/icons/series/design.svg",
+              "width": 32,
+              "height": 32
+            }
+          },
+          {
+            "id": "card4",
+            "title": "Безопасный материал",
+            "style": " feature-series",
+            "image": {
+              "src": "/icons/series/safe.svg",
+              "width": 32,
+              "height": 32
+            }
+          }
+        ]
+      }
+    ],
+    "products": [
+      {
+
+      }
+    ],
+    "articles": [
+      {
+        "id": "cardnews1",
+        "title": "Коллектив компании \"Standart Group\" поздравляет всех с праздником Победы!",
+        "style": " news__card",
+        "publishedTime": 1695980667921,
+        "text": "<p>Представляем материал из линейки премиум материалов Deloud Demfer! Уникальность Deloud Demfer - в толщине фольги, которая составляет 120 микрон и не имеет аналогов на нашем рынке. Deloud Demfer создан для серьёзных SPL — проектов.</p>",
+        "content": "<p>Ключевым действием каждого пользователя при просмотре Интернета является поиск некоторой информации. Есть два простых способа найти необходимые данные: ввести URL-адрес нужного сайта в адресную строку браузера или ввести в строку поиска интересующий вас запрос и выбрать наиболее подходящий результат. Учитывая, что у человека не всегда есть ссылка на нужный сайт, второй вариант является наиболее распространенным.</p><p>Ключевым действием каждого пользователя при просмотре Интернета является поиск некоторой информации. Есть два простых способа найти необходимые данные: ввести URL-адрес нужного сайта в адресную строку браузера или ввести в строку поиска интересующий вас запрос и выбрать наиболее подходящий результат. Учитывая, что у человека не всегда есть ссылка на нужный сайт, второй вариант является наиболее распространенным.</p>",
+        "slug": "/kollektiv-da123-cardnews1",
+        "image": {
+          "src": "/img/news/img_news_01.png",
+          "width": 418,
+          "height": 260
+        },
+        "tags": [
+          {
+            "text": "Акции",
+            "link": "/akcii"
+          },
+          {
+            "text": "События",
+            "link": "/actions"
+          }
+        ]
+      }
+    ],
+    "calc": {
+      "size": [
+        {
+          "id": "b",
+          "title": "B класс",
+          "subTitle": "Компактный"
+        },
+        {
+          "id": "c",
+          "title": "C класс",
+          "subTitle": "Компактный"
+        },
+        {
+          "id": "d",
+          "title": "D класс",
+          "subTitle": "Компактный"
+        },
+        {
+          "id": "e",
+          "title": "E класс",
+          "subTitle": "Компактный"
+        },
+        {
+          "id": "suv",
+          "title": "SUV/Джип",
+          "subTitle": "Компактный"
+        },
+        {
+          "id": "cross",
+          "title": "Кроссовер",
+          "subTitle": "Компактный"
+        }
 
 
-    }
+
+    ],
+      "variant": [
+        {
+          "id": "base",
+          "title": "Базовый",
+          "subTitle": "Доступное решение"
+        },
+        {
+          "id": "comfort",
+          "title": "Комфорт",
+          "subTitle": "Сбалансированное"
+        },
+        {
+          "id": "premium",
+          "title": "Премиум",
+          "subTitle": "Компактный"
+        }
+      ]
+  }
   }
 }

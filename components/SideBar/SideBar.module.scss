@@ -1,6 +1,10 @@
 .container {
   display: block;
   grid-column: 2/span 4;
+  grid-row: 1/2;
+}
+.left {
+  grid-column: 2/span 3;
 }
 .list {
 	margin-bottom: 2.5rem;

@@ -4,7 +4,7 @@
 }
 
 .link {
-	@apply text-gray-500 font-bold;
+	@apply text-gray-500 font-bold uppercase;
 }
 
 .active {

@@ -5,7 +5,7 @@ import BooksStore, { BooksStoreProps } from "./Books";
 export type RootStoreHydration = {
 	stopwatchStore?: configStoreProps;
 };
-export default class RootStore {
+class RootStore {
 	configStore: configStoreProps;
 	booksStore: BooksStoreProps;
 
@@ -21,5 +21,5 @@ export default class RootStore {
 		}
 	}
 }
-// const rootStore = new RootStore()
-// export default rootStore
+const rootStore = new RootStore()
+export default rootStore

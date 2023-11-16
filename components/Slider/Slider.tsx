@@ -5,7 +5,7 @@ import { Autoplay, Controller } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
-import { EventHandler, useEffect, useState } from "react";
+import { EventHandler, useEffect, useId, useState } from "react";
 
 interface SliderControlProps {
 	activeSlideIndex: number
@@ -14,26 +14,21 @@ interface SliderControlProps {
 }
 
 
-const Slider = ({items}:any) => {
+const Slider = ({items, maxWidth = "420px"}:any) => {
+	const id = useId();
 	const [activeSlide, setActiveSlide] = useState(0);
-	const [activeSlider, setActiveSlider] = useState(0);
-	const slides = items.map((it:any) => <SwiperSlide style={{maxWidth: "420px"}} key={it.id}>{it}</SwiperSlide>)
-	// slides.push(<SwiperSlide style={{opacity: 0}} key={"last"}>{items[1]}</SwiperSlide>)
+	const slides = items.map((it:any) => <SwiperSlide style={{maxWidth: maxWidth  }} key={id}>{it}</SwiperSlide>)
 	useEffect(() => {
 		if(swiperInit){
-
 			// @ts-ignore
 			swiperInit.slideTo(activeSlide, 500, () => console.log('Callback'))
 		}
 	}, [activeSlide])
 	const SliderControl = ({activeSlideIndex, maxSlides, action}:SliderControlProps) => {
-		//
+
 		const handleActiveIndex = (event:any) => {
-			// setActiveSlider(event.target.value)
 			setActiveSlide(event.target.value);
-			console.log(event)
 		}
-		// action =  handleActiveIndex
 		return (
 			<div className={styles.slider__control}>
 				<input type="range"
@@ -43,20 +38,15 @@ const Slider = ({items}:any) => {
 					value={activeSlideIndex}
 					defaultValue={0}
 					max={maxSlides}
-
 					step={1}
 					onInput={(event) => handleActiveIndex(event)}
 					onChange={(event) => handleActiveIndex(event)}
-					// onChange={handleActiveIndex}
 				/>
-				{/*<label htmlFor="volume">Active slide: {activeSlideIndex}, maxSlides : {maxSlides}</label>*/}
 			</div>
-
 		)
 	}
 
 	const handleIndex = (event: number) => {
-
 		setActiveSlide(event);
 	}
 	const [swiperInit, setSwiperInit] = useState(null);
@@ -79,7 +69,6 @@ const Slider = ({items}:any) => {
 			modules={[Controller, Autoplay, Pagination]}
 
 			onSlideChange={(swiper) => {
-
 				handleIndex(swiper.activeIndex)
 			}}
 			// @ts-ignore
@@ -88,7 +77,6 @@ const Slider = ({items}:any) => {
 			{slides}
 		</Swiper>
 		<SliderControl maxSlides={slides.length - 1} activeSlideIndex={activeSlide}/>
-
 	</div>;
 };
 

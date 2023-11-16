@@ -7,7 +7,7 @@ const StgButton = extendVariants(Button, {
 			primary: "text-white bg-primary",
 			secondary: "text-white bg-secondary",
 			white: " bg-transparent border-white text-white  hover:border-gray-500 hover:text-gray-100 border-2 hover:bg-gray-700 hover:bg-opacity-50",
-			outline: "text-secondary font-semibold border-white border-2 text-primary bg-transparent",
+			outline: "font-semibold border-current border-2 text-primary bg-transparent hover:bg-primary hover:text-white",
 			orange: "bg-[#ff8c00] text-[#fff]",
 			violet: "bg-[#8b5cf6] text-[#fff]",
 		},

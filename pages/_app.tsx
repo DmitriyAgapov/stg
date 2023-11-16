@@ -1,23 +1,51 @@
-import '@/assets/styles/globals.scss'
-import type { AppProps } from 'next/app';
+import '@/assets/styles/globals.scss';
+import App, { AppContext, AppInitialProps, AppProps } from 'next/app';
 import Layout from "@/components/Layout";
 import { NextUIProvider } from "@nextui-org/react";
-// import { createContext } from "react";
-// import { getSide } from "@/utils/getSide";
-// import { useStore } from "@/store";
+import {getData} from "@/utils/getData";
+import { queryMenu } from "@/utils/queries/menu";
+import { createContext } from "react";
+import { useStore } from "@/store";
+export const MobxContext =  createContext(null)
+type AppMenuProps = { menu: any }
+export default function MyApp({ Component, pageProps, menu }: AppProps & AppMenuProps) {
 
-// export const MobxContext = createContext(null);
-export default function App({ Component, pageProps }: AppProps) {
-    // console.log("hello from _app - ", getSide());
-
-    // const store = useStore(pageProps.initialState);
-  return (
+    const store = useStore(pageProps.initialState);
+    return (
       <NextUIProvider>
-          {/*// <MobxContext.Provider value={store}>*/}
-            <Layout>
+          <MobxContext.Provider value={store}>
+            <Layout locale={pageProps.locale} seo={pageProps?.data?.seo || {
+                metaDescription: "def",
+                metaTitle: "def",
+                keywords: "def"
+            }}
+                menu={menu}
+            >
               <Component {...pageProps} />
             </Layout>
-          {/*// </MobxContext.Provider>*/}
+          </MobxContext.Provider>
       </NextUIProvider>
   )
+}
+
+MyApp.getInitialProps = async (context: AppContext): Promise<AppMenuProps & AppInitialProps> => {
+
+    const ctx = await App.getInitialProps(context);
+
+    const header  = await getData(queryMenu, {
+        navslug: "header",
+        locale: context.router.locale
+    });
+     const footer  = await getData(queryMenu, {
+        navslug: "footer",
+        locale: context.router.locale
+    });
+
+    return {
+        ...ctx,
+        menu: {
+            header: header.data,
+            footer: footer.data
+        }
+    }
 }

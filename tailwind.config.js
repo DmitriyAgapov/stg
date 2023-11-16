@@ -5,10 +5,13 @@ module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/**/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@ta/theme/dist/**/*.{js,ts,jsx,tsx}",
     // Or if using `src` directory:
     // "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -122,9 +125,9 @@ module.exports = {
           '3xl': "3rem",
           '4xl': "4rem"
         },
-        "fontFamily": {
-          "inter": "Inter"
-        },
+        // fontFamily: {
+        //   inter: "Inter"
+        // },
       },
       dark: {
         colors: {

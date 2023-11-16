@@ -1,36 +1,71 @@
 import styles from './Header.module.scss';
-
-import { Link, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@nextui-org/react";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem,  Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu} from "@nextui-org/react";
-import {ChevronDown,LogoSvg, Lock, Activity, Flash, Server, TagUser, Scale} from "@/components/Icons";
-import NextLink  from "next/link";
+import { Button, Link, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@nextui-org/react";
+import { Activity, ChevronDown, Flash, Lock, LogoSvg, Scale, Server, TagUser } from "@/components/Icons";
+import NextLink from "next/link";
 import StgButton from "@/components/ui/StgButton";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
+import { JSX, JSXElementConstructor, PromiseLikeOfReactNode, ReactElement, ReactNode, ReactPortal,
+	useMemo,
+	useState
+} from "react";
+import { HeaderNewMenu, MenuHeader } from "@/components/Header/MenuHeader";
+import Heading, { HeadingVariants } from "@/components/ui/Heading";
 
-
-import { useState } from "react";
-import Section from "@/components/Section";
 export const Logo = () => {
 	return <div className={styles.logoWrapper ? styles.logoWrapper : " " + " " + "logo"}>
 		<NextLink href={'/'}><LogoSvg/></NextLink>
-	</div> ;
+	</div>;
 }
 
-const DropDownMenu = () => {
-	return (
-	<Section className={'fixed left-0 right-0 h-[200px] top-[112px] bg-white z-10'}>
-		<ul>
-			<li>Item</li>
-			<li>Item</li>
-			<li>Item</li>
-		</ul>
-	</Section>
-	)
+function HeaderMenu(props: {
+	onClick: () => void,
+	items: any,
+	icons: {
+		server: JSX.Element;
+		activity: JSX.Element;
+		scale: JSX.Element;
+		lock: JSX.Element;
+		chevron: JSX.Element;
+		user: JSX.Element;
+		flash: JSX.Element
+	},
+	onMouseEnter: () => void
+}) {
+	const menuContent = (items:any) => {
+		let submenu: string | any[] = [];
+		const rootMenu: JSX.Element[] = [];
+
+		items.forEach((item: { items: string | any[]; path: string | undefined; title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined; }) => {
+			if(item.items.length > 0) {
+				rootMenu.push(<NavbarItem><Button disableRipple className="p-0 bg-transparent data-[hover=true]:bg-transparent" endContent={props.icons.chevron} radius="sm" variant="light" onMouseEnter={props.onMouseEnter}><Link className={styles.links} as={NextLink} href={item.path} aria-current="page">{item.title}</Link></Button></NavbarItem>)
+				submenu = item.items;
+			} else {
+				rootMenu.push(<NavbarItem><Link className={styles.links} as={NextLink} href={item.path} aria-current="page">{item.title}</Link></NavbarItem>)
+			}
+		});
+
+		return {
+			root: rootMenu,
+			submenu: submenu
+		}
+	}
+	const TopMenu = () => menuContent(props.items).root;
+	const subMenu =  menuContent(props.items).submenu.map(it => ({ ...it, child: it.items.map(i => ({ ...i, url: i.path.replace('#/', '') })), }));
+
+	return <>
+		<HeaderNewMenu items={subMenu} onClick={props.onClick}/>
+
+		<NavbarContent className="hidden sm:flex gap-6 justify-between lg:col-span-4  m-0 p-0 w-full">
+			<TopMenu />
+		</NavbarContent>
+	</>;
 }
 
-const Header = () => {
-	const [open, setOpen] = useState(false);
+const Header = ({ menu, ...props }:any) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const memoizedMenu = useMemo(() => menu, [menu]);
+
 	const icons = {
 		chevron: <ChevronDown fill="currentColor" size={16} />,
 		scale: <Scale className="text-warning" fill="currentColor" size={30} />,
@@ -40,95 +75,46 @@ const Header = () => {
 		server: <Server className="text-success" fill="currentColor" size={30} />,
 		user: <TagUser className="text-danger" fill="currentColor" size={30} />,
 	};
+
 	return (
-<>
-			<Navbar maxWidth={"full"} className={styles.container} isBordered
+		<>
+			<Navbar maxWidth={"full"}
+				className={styles.container}
+				isBordered
 				isMenuOpen={isMenuOpen}
 				onMenuOpenChange={setIsMenuOpen}>
 
-				<NavbarContent className="sm:hidden" justify="start">
-					<NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
+				<NavbarContent className="sm:hidden"
+					justify="start">
+					<NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"}/>
 				</NavbarContent>
 
 				<NavbarBrand className={'lg:col-span-5'}>
-					<Logo />
+					<Logo/>
 				</NavbarBrand>
-
-				<NavbarMenu className={'lg:max-h-48 lg:top-24 list-none'}
+				<HeaderMenu
 					onClick={() => setIsMenuOpen(false)}
-					onMouseLeave={() => setIsMenuOpen(false)}
-				>
-
-					<NavbarMenuItem>
-						{/*<DropdownTrigger>*/}
-						<Section>
-							<div className={"inner_menu lg:col-start-7 lg:col-end-13"}>
-								<Button
-									disableRipple
-									className="p-0 bg-transparent data-[hover=true]:bg-transparent "
-									endContent={icons.chevron}
-									radius="sm"
-									variant="light"
-									href={'/test'}
-									as={NextLink}
-								>Features
-								</Button>
-							</div>
-						</Section>
-						{/*</DropdownTrigger>*/}
-					</NavbarMenuItem>
-
-
-				</NavbarMenu>
-				<NavbarContent className="hidden sm:flex gap-6 justify-between lg:col-span-4  m-0 p-0 w-full" >
-
+					items={memoizedMenu}
+					icons={icons}
+					onMouseEnter={() => setIsMenuOpen(true)}/>
+				<NavbarContent justify={"end"}
+					className={'lg:col-span-3 content-end  m-0 p-0'}>
 
 					<NavbarItem>
-						<Button
-							disableRipple
-							className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-							endContent={icons.chevron}
-							radius="sm"
-							variant="light"
-							onMouseEnter={() => setIsMenuOpen(prevState => !prevState)}
-						>
-							<Link className={styles.links} as={NextLink} href="/features" aria-current="page">
-								Каталог
-							</Link>
-						</Button>
-
-					</NavbarItem>
-					<NavbarItem >
-						<Link className={styles.links} as={NextLink} href="#" aria-current="page">
-							Партнерам
-						</Link>
-					</NavbarItem>
-
-					<NavbarItem>
-						<Link className={styles.links} as={NextLink}  href="#">
-							О компании
-						</Link>
-					</NavbarItem>
-					<NavbarItem>
-						<Link className={styles.links} as={NextLink} color="foreground" href="#">
-							Контакты
-						</Link>
-					</NavbarItem>
-
-				</NavbarContent>
-				<NavbarContent justify={"end"} className={'lg:col-span-3 content-end  m-0 p-0'}>
-
-					<NavbarItem>
-						<StgButton as={Link} color="outline" size={"md"} href="#"  variant="ghost">
+						<StgButton as={Link}
+							color="outline"
+							size={"md"}
+							href="#"
+							variant={'solid'}>
 							Калькулятор
 						</StgButton>
 					</NavbarItem>
 					<NavbarItem className="hidden lg:flex">
-						<LocaleSwitcher />
+						<LocaleSwitcher/>
 					</NavbarItem>
 				</NavbarContent>
 			</Navbar>
-			{open && <DropDownMenu />}
+			{/*{open && <DropDownMenu/>}*/}
 		</>
 	)
 };

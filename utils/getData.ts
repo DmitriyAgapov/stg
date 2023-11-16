@@ -1,6 +1,9 @@
-export const urlApi = process.env.GRAPHQL_API;
+import { flattenEntityResponse } from "strapi-flatten-graphql";
+import { simplifyResponse } from "@/utils/gql";
 
-export const getData = async (query = "", locale = 'ru', variables: any | undefined) => {
+export const urlApi = (typeof window === "undefined") ? process.env.GRAPHQL_API : process.env.NEXT_PUBLIC_GRAPHQL_API;
+
+export const getData = async (query = "",  variables: {}) => {
 
 	const response = await fetch(urlApi as string,{
 		method: 'POST',
@@ -10,13 +13,14 @@ export const getData = async (query = "", locale = 'ru', variables: any | undefi
 		},
 		body: JSON.stringify({
 			query:  query,
-			"variables": {
-				locale: locale,
+			variables: {
 				...variables
 			}
 		})
 	})
 	const { data } = await response.json();
 
-	return data
+	return {
+		data: simplifyResponse(await data)
+	}
 }
