@@ -101,10 +101,10 @@ const Header = ({ menu, ...props }:any) => {
 					className={'lg:col-span-3 content-end  m-0 p-0'}>
 
 					<NavbarItem>
-						<StgButton as={Link}
+						<StgButton as={NextLink}
 							color="outline"
 							size={"md"}
-							href="#"
+							href="/calc"
 							variant={'solid'}>
 							Калькулятор
 						</StgButton>

@@ -18,6 +18,7 @@ import SideBar from "@/components/SideBar";
 import testData from "@/utils/testData.json";
 import SectionNews from "@/components/Section/SectionNews";
 import SectionRelated from "@/components/Section/SectionRelated";
+import { CalcCard, CalcCardVariant } from "@/components/Calc/Calc";
 // @ts-ignore
 const VideoOnlyClient = dynamic((props) => import('@/components/Video'), {
 	ssr: false,
@@ -37,7 +38,7 @@ export interface SectionProps {
 	text?: string | ReactNode
 	cards?: any
 	series?: any
-	Links: any[]
+	Links?: any[]
 	className?: string
 	media?: ReactNode | {
 
@@ -106,9 +107,10 @@ const Section = ({ header, Links, children, breadcrumbs, nextLink = false, headi
 						properties={{
 							variants: i.variants,
 							class: i.class,
-							place: i.place
+							place: i.place,
+							type: i.product_category
 						}}
-						series={i.series[0]}
+						series={i.series}
 						headingVariant={HeadingVariants.h3}
 						img={i.images[0]}
 						link={`/catalog/${i.series[0].slug}/${i.slug}`}
@@ -127,8 +129,25 @@ const Section = ({ header, Links, children, breadcrumbs, nextLink = false, headi
 		case 'form_questions':
 			childrenArray.push(<FormQuestions/>);
 			break;
-	}
 
+		case 'calc_car_class':
+			cards.forEach((i:any) => {
+				cardsAr.push(
+					<CalcCard
+						key={i.id}
+						size={i}/>
+				)
+			});
+			break;
+
+		case 'calc_series':
+			cards.forEach((i:any) => {
+				cardsAr.push(
+					<CalcCardVariant key={i.id}
+						variant={i}/>)
+			});
+			break;
+	}
 	return (
 		<section className={`section ${styles.container} ${className}`}>
 			{breadcrumbs && breadcrumbs}
@@ -138,7 +157,7 @@ const Section = ({ header, Links, children, breadcrumbs, nextLink = false, headi
 			{header && <h2 className={'section__title'}>{header}</h2>}
 			{shortText  ? <div className={`section__shortText`}><TextBlockRenderer text={shortText}/></div> : null}
 			{text && <div className={`section__text ${styles.text}`}><TextBlockRenderer text={text}/></div>}
-			{cardsAr && <div className={`section__cards ${styles.cards}`}>{isGallery ? <Slider items={cardsAr}/> : cardsAr }</div>}
+			{(cardsAr && cardsAr.length > 0) && <div className={`section__cards ${styles.cards}`}>{isGallery ? <Slider items={cardsAr}/> : cardsAr }</div>}
 			{media && <div className={`section__media ${styles.media  && styles.media}`}>{media?.mime.indexOf('video') === 0 ? <VideoOnlyClient src={process.env.NEXT_PUBLIC_BACK_URL + media?.url}/> : null }</div>}
 			{background && background &&  <div className={`section__media ${styles.media  && styles.media}`}>
 				<Image

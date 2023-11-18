@@ -6,62 +6,61 @@ import React from "react";
 import { CardParams, ProductCard } from "@/components/Cards/Card/Card";
 import { translateText } from "@/utils/translate";
 import ImageBlock from "@/components/ui/ImageBlock";
+import { useRouter } from "next/router";
+import { Util } from "leaflet";
+import indexOf = Util.indexOf;
+import { translateIt } from "@/utils/utils";
+import StgButton from "@/components/ui/StgButton";
+interface ItemPropertiesProps {
+    label: string
+    id: string
+    size: string
+    thickness: number
+    quanity_in_box: number
+    sqrt: number
+    weight: string
+    specific_weight: number
+    kmp: number
+    adhesion: number
+    temp: string
+    values: any[] | {
+        title: string
+    }
+}
+function ItemProperties({ items, label }: { items: any, label: string }) {
+
+    if(items && items.values) return <dl className={styles.card__prop + " " + "card__properties" }>
+        <dt className={styles.card__dt + " " + "card__dt"}>{translateText(label)}</dt>
+        <dd className={styles.card__dd + " " + "card__dd "}>
+            {items.length > 0 && items.map((value:any, index:number) => <span key={index}
+                className={label === "thickness" ?  styles.properties_checkbox_inset : undefined}>
+                {`${translateText(value)} ${(label !== "thickness") ? ((index < items.values.title?.length - 1) ? ',' : '') : ""} `}</span>)}
+        </dd>
+    </dl>;
+}
+
 
 const CardProduct = ({ title, series, headingVariant = HeadingVariants.h2, properties, mousePath = true, text, style, img, link, action, locale, ...props }: ProductCard) => {
 
-    function mapProps() {
-        const newAr = new Map();
-        if(properties) {
-            for (let i = 0; properties.length > i; i++) {
-                for (const key in properties[i]) {
-                    let propslist: any = []
-                    let groupBy = properties.reduce((accumulator, currentValue) => [ ...accumulator, currentValue[key] ],
-                        propslist);
 
-                    newAr.set(key, {
-                        "heading": translateText(key, locale),
-                        "propslist": groupBy.indexOf(null) !== 0 ? groupBy : []
-                    })
-                }
-            }
-            newAr.delete('id')
-            newAr.delete('property')
-            newAr.delete('quanity_in_box')
-            newAr.delete('sqrt')
-            newAr.delete('weight')
-            newAr.delete('specific_weight')
-            newAr.delete('kmp')
-            newAr.delete('temp')
-            newAr.delete('adhesion')
-        }
-        return newAr
+    const Places = ({values, label} : any) => {
+        return <ItemProperties items={values} label={label} key={'places'} />
+    }
+    const Series = ( {values, label}:any) => {
 
+        return <ItemProperties items={values} label={label} key={'places'} />
+    }
+    const Type = ( {values, label}:any) => {
+        return <ItemProperties items={values} label={label}
+             key={'type'} />
     }
 
-    const propsMap = mapProps();
-
-    const ProdProp = () => {
-        const arr: React.JSX.Element[] = [];
-        propsMap.forEach((value, key, map) => {
-                if (value.propslist.length > 0)
-                    arr.push(
-                        <dl key={key}
-                            className={styles.card__prop + " " + 'card__properties'}>
-                            <dt className={styles.card__dt + " " + 'card__dt'}>{value.heading}</dt>
-                            {key === 'size' ? <dd className={styles.card__dd + " " + 'card__dd' + ' '}>
-                            <span key={'one' + key}
-                                className={''}>{value.propslist[0]}</span></dd> :
-                                <dd className={styles.card__dd + " " + 'card__dd' + ' ' + styles[`properties-checkbox_inset`]}>{value.propslist.map((li: any, index: number) =>
-                                    <span key={index}
-                                        className={''}>{li}</span>,)}</dd>
-                            }</dl>)
-            }
-        )
-        arr.push()
-        return <div className={styles.properties}>{arr}</div>
-    }
-
-
+    const Thickness = ( items: {values: any, label: string}) => {
+        return <ItemProperties
+            items={items.values.reduce((accamulator: any, currentValue: any) => [...accamulator, currentValue["thickness"]],[] )}
+            label={'thickness'}
+            key={'thickness'} />}
+     const Sizes = () => <ItemProperties items={[`${properties.variants[0].size}`]} label={'size'} key={'size'} />
     return <div className={styles.card + " " + 'card' + style}>
         <div className={styles.containerNo + " " + "card__container"}>
             <NextLink className={styles.title + " " + 'card__title'}
@@ -77,7 +76,7 @@ const CardProduct = ({ title, series, headingVariant = HeadingVariants.h2, prope
             {/*{img && <div className={'card__img'}>{img}</div>}*/}
             {img ? (
                 // @ts-ignore
-                img.url && <div className={'card__img'}>
+                img.url && <div className={styles.card__img}>
                     <Image sizes={"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"}
                         // @ts-ignore
                         src={process.env.NEXT_PUBLIC_BACK_URL + img.url}
@@ -86,14 +85,34 @@ const CardProduct = ({ title, series, headingVariant = HeadingVariants.h2, prope
                         alt={''}/>
 
                 </div>) : <ImageBlock />}
-            {series && series.type &&
+            {properties?.class &&
                 <div className={styles.card__tags + " " + 'card__tags'}>
-                    <span className={styles.card__tag + " " + 'card__tag'}>{series.type}</span>
+                    <span className={styles.card__tag + " " + 'card__tag'}>{properties.class}</span>
                 </div>}
+            <div className={styles.properties}>
+                <Series values={[series[0].title]}
+                    label={'series'}
+                />
+                <Type values={properties.type ? [properties.type.title] : undefined}
+                    label={'type'}
+                />
+                <Thickness values={properties.variants}
+                    label={'thickness'}/>
+                <Places values={properties.place}
+                    label={'place'} />
+                <Sizes />
+                <StgButton as={NextLink}
+                    className={styles.button}
+                    color="outline"
+                    size={"md"}
+                    href="/calc"
+                    variant={'outline'}>
+                    Подробнее
+                </StgButton>
+            </div>
 
-
-            {props.children && props.children}
-            {/*<ProdProp/>*/}
+            {/*{props.children && props.children}*/}
+            {/*<ProdProp />*/}
         </div>
         {/*<div className={styles.slidePanel}>*/}
 

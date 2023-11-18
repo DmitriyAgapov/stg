@@ -8,89 +8,109 @@ import Books from "@/store/Books";
 import BooksStore from "@/store/Books";
 import Image from "next/image";
 import { Bsvg, Csvg, Dsvg, Esvg, SuvSvg, CrossSvg } from "@/components/Icons";
+import {useRouter} from "next/router";
+import {toJS} from "mobx";
+import React, { useEffect } from "react";
+import Link from "next/link";
+import {num_plural} from "@/utils/utils";
+
+
 let allIcons = [
 	{
-		id: "b",
+		id: "b-klass",
 		svg: <Bsvg/>
 	},
-	{id: "c", svg: <Bsvg/>},
-	{id: "d" ,svg: <Dsvg/>},
-	{id: "e" ,svg: <Esvg/>},
-	{id: "suv" ,svg: <SuvSvg/>},
-	{id: "cross" ,svg: <CrossSvg/>}
+	{id: "c-klass", svg: <Bsvg/>},
+	{id: "d-klass" ,svg: <Dsvg/>},
+	{id: "e-klass" ,svg: <Esvg/>},
+	{id: "suv-dzhip" ,svg: <SuvSvg/>},
+	{id: "krossover" ,svg: <CrossSvg/>}
 ]
 
-const CalcCard = observer((props: {
+export const CalcCard = observer((props: {
 	size: {
 		id: string
 		title: string
 		subTitle: string
+		slug: string
+        subtitle: string
 	} | undefined
 
 }) => {
-	// @ts-ignore
-	let keySize = allIcons.filter((icon) => icon.id === props.size.id)
 
-	// console.log(icon[`${keySize.toString()}`])
-	let store = useStore()
+	// @ts-ignore
+	let keySize = allIcons.filter((icon) => icon.id == props.size.slug);
+
+	let store = useStore();
 
 	const CurIcon = () => keySize[0].svg;
-	return <div className={"card card_calc"} data-active={store.booksStore.calc.size === props.size?.id ? true : null} onClick={event => {
+
+	return <div className={"card card_calc"} data-active={store.booksStore.calc.size === props.size?.slug ? true : null} onClick={event => {
+		console.log('click', store.booksStore.calc)
 		if(props.size) {
 			if (!store.booksStore.calc.size) {
-				store.booksStore.setCalcSize(props.size.id)
-			} else if (store.booksStore.calc.size && store.booksStore.calc.size !== props.size.id) {
-				store.booksStore.setCalcSize(props.size.id);
-			} else if (store.booksStore.calc.size && store.booksStore.calc.size === props.size.id) {
+				store.booksStore.setCalcSize(props.size.slug)
+			} else if (store.booksStore.calc.size && store.booksStore.calc.size !== props.size.slug) {
+				store.booksStore.setCalcSize(props.size.slug);
+			} else if (store.booksStore.calc.size && store.booksStore.calc.size === props.size.slug) {
 				store.booksStore.setCalcSize(undefined)
 				store.booksStore.setCalcVariant(undefined)
 			}
 		}
-	}}><h4>{props.size?.title}</h4><span>{props.size?.subTitle}</span><CurIcon /></div>;
+	}}><h4>{props.size?.title}</h4><span>{props.size?.subtitle}</span><CurIcon /></div>;
 });
 
-const CalcCardVariant = observer((props: {
-
+export const CalcCardVariant = observer((props: {
 	variant: {
 		id: string
 		title: string
 		subTitle: string
+		slug: string
 	} | undefined
 }) => {
-
 	let store = useStore()
 
-	return <div className={"card card_calc"} data-active={store.booksStore.calc.variant === props.variant?.id ? true : null}
+	return <div className={"card card_calc"} data-active={store.booksStore.calc.variant === props.variant?.slug ? true : null}
 		onClick={event => {
+
 			if(props.variant) {
 		if (!store.booksStore.calc.variant) {
-			store.booksStore.setCalcVariant(props.variant.id)
-		} else if(store.booksStore.calc.variant && store.booksStore.calc.variant !== props.variant.id) {
+			store.booksStore.setCalcVariant(props.variant.slug)
+		} else if(store.booksStore.calc.variant && store.booksStore.calc.variant !== props.variant.slug) {
 			store.booksStore.setCalcVariant(undefined);
-			store.booksStore.setCalcVariant(props.variant.id);
-		} else if(store.booksStore.calc.variant && store.booksStore.calc.variant === props.variant.id) {
+			store.booksStore.setCalcVariant(props.variant.slug);
+		} else if(store.booksStore.calc.variant && store.booksStore.calc.variant === props.variant.slug) {
 			store.booksStore.setCalcVariant(undefined);
-		}}}
+		}}
+			console.log('clickVar', store.booksStore.calc)
+		}
 	}><h4>{props.variant?.title}</h4><span>{props.variant?.subTitle}</span></div>;
 });
 
-const CalcSection = observer(props =>  {
+const CalcSection = observer((props: any) =>  {
 	let store = useStore()
-	return <div className={styles.Calc}>
-        <Section
-			shortText={'Выберите класс автомобиля'}
-			cards={testData.data.calc.size.map((p, index) =>
-				<CalcCard key={index}
-					size={p}/>)}
-			>
-		</Section>
-		{store.booksStore.calc.size  && <Section
-			shortText={'Выберите размер автомобиля'}
-			cards={testData.data.calc.variant.map((p, index) =>
-				<CalcCardVariant key={index}
-					variant={p}/>)}
->			</Section>}
 
+
+	return <div className={styles.Calc}>
+
+        <Section
+			shortText={props.sections[0].shortText}
+			className={props.sections[0].type}
+			cards={props.sections[0].car_class_calcs}>
+		</Section>
+
+		{store.booksStore.calc.size  && <Section
+			className={props.sections[1].type}
+			shortText={props.sections[1].shortText}
+			cards={props.sections[1].series}
+
+			// cards={testData.data.calc.variant.map((p, index) =>
+			// 	<CalcCardVariant key={index}
+			// 		variant={p}/>)}
+>			</Section>}
+		{/*<Section header={props.sections[2].title} shortText={props.sections[2].shortText} className={props.sections[2].type}><CalcResult/></Section>*/}
+
+		{props.children}
 
     </div>;
 });

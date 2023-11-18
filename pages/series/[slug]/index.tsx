@@ -23,7 +23,7 @@ import { queryProducts } from "@/utils/queries/products";
 export default function SeriePage({data}) {
 
 	const router = useRouter()
-	console.log(data.products)
+
 	return (<>
 		<Main
 			className={'page-series'}
@@ -45,52 +45,10 @@ export default function SeriePage({data}) {
 			)}
 		/>
 		<Section className={'page-serie'}
+			header={'Продукция'}
 			// sidebar={<SideBarCatalog items={testData.data["production-props"]} />}
 			cards={data.products}
-		>
-			{/*<div className={'products-container-header col-span-full mb-8 flex justify-end row-start-3 row-end-3 col-start-2 col-end-[-2]'}>*/}
-			{/*	<	// @ts-ignore*/}
-			{/*		Select*/}
-			{/*		label="Сортировать по"*/}
-			{/*		className="max-w-xs"*/}
-			{/*		color={"default"} radius={"none"} variant={"flat"}   fullWidth  disableAnimation>*/}
-
-			{/*		<SelectItem  key={"series"} value={"Серии"}>*/}
-			{/*			Серии*/}
-			{/*		</SelectItem>*/}
-			{/*		<SelectItem key={"size"} value={"Размеру"}>*/}
-			{/*			Размеру*/}
-			{/*		</SelectItem>*/}
-
-
-			{/*	</Select>*/}
-			{/*</div>*/}
-			<div className={'products-container'}>
-
-				{data.products.map((i) => {
-
-					return <CardProduct
-						style={"-product"}
-						title={i.title}
-						key={i.id}
-						properties={i.variants}
-						series={i.series}
-						// @ts-ignore
-						headingVariant={"h3"}
-						img={{
-
-							id: i.images[0].id,
-							src: i.images[0].url,
-							width: i.images[0].width,
-							height: i.images[0].height
-						}
-						}
-						link={`/catalog/${data.slug}/${i.slug}`}
-                        {...i}
-					>
-					</CardProduct>})}
-			</div>
-		</Section>
+		/>
 		{/*<Section header={'Аксессуары'}*/}
 		{/*	className={'accessories'}*/}
 		{/*	isGallery={true}*/}

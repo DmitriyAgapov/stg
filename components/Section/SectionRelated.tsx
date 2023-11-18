@@ -9,6 +9,7 @@ import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
 import CardProduct from "@/components/Cards/CardProduct";
 import TextBlockRenderer from "@/components/ui/TextBlockRenderer/TextBlockRenderer";
+import CardSimpleProduct from "@/components/Cards/CardProduct/CardSimpleProduct";
 
 function SectionRelated(props: any) {
 
@@ -23,14 +24,14 @@ function SectionRelated(props: any) {
 
 	// @ts-ignore
 	console.log(props)
-	const cardsAr = props.cards.map(card => <CardProduct key={card.id}
+	const cardsAr = props.cards.map(card => <CardSimpleProduct key={card.id}
 		headingVariant={HeadingVariants.h4}
 		img={card.image}
 		title={card.title}
 		style={" card-product related"}
 		link={`/blog/${card.slug}`}>
 		<div className={'card__category text-sm font-semibold  text-gray-400 capitalize'}><span>{card.product_category.title.toLowerCase()}</span></div>
-	</CardProduct>);
+	</CardSimpleProduct>);
 
 	return <section className={`section ${styles.container} related`}>
 		{props.header && <h2 className={'section__title'}>{props.header}</h2>}

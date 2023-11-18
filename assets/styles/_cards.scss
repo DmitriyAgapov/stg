@@ -86,11 +86,41 @@
   }
 }
 .card_calc {
-  grid-column: span 3;
+  grid-column: span 4;
   padding: 1.5rem;
   height: 136px;
   cursor: pointer;
-  @apply outline-1 outline-gray-400 relative overflow-hidden outline -mr-8 flex justify-between;
+  @media screen and (min-width: 768px) and (max-width: 1199px){
+    grid-column: span 4;
+    &:nth-child(2n + 1) {
+      margin-right: calc(0px - (var(--gridGap) * 2) / 3);
+    }
+    &:nth-child(2n + 2) {
+      margin: 0 calc(0px - (var(--gridGap)) / 3);
+    }
+
+
+  }
+  @media screen and (min-width: 1200px ) {
+    grid-column: span 4;
+    &:nth-child(3n + 1) {
+      margin-right: calc(0px - (var(--gridGap) * 2) / 3);
+    }
+    &:nth-child(3n + 2) {
+      margin: 0 calc(0px - (var(--gridGap)) / 3);
+    }
+    &:nth-child(3n + 3) {
+      margin-left: calc(0px - (var(--gridGap) * 2) / 3);
+    }
+
+  }
+   @media screen and (min-width: 1366px){
+    grid-column: span 3;
+
+  }
+
+
+  @apply outline-1 outline-gray-400 relative overflow-hidden outline flex justify-between;
   h4 {
     @apply uppercase text-gray-600 font-bold text-xl;
   }
@@ -140,6 +170,8 @@
     }
   }
   &:hover {
+    position: relative;
+    z-index: 222;
     &:before {
 
       transform: translateX(-10%);

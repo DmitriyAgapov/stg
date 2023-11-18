@@ -1,7 +1,8 @@
-import { makeAutoObservable, set, get, toJS } from "mobx";
+import { makeAutoObservable, toJS, autorun } from "mobx";
 import { books, clientBooks } from "@/utils/getSide";
 import { getData } from "@/utils/getData";
 import { queryAllCategories, queryLastNews } from "@/utils/queries/news";
+import { queryCalcResult } from "@/utils/queries/calc";
 
 
 export type CalcProps = {
@@ -29,6 +30,7 @@ export interface BooksStoreProps {
 	setActveImageBgIndex: (id:string) => void;
 	setBooks: (books: any) => any;
 	fetchBooks: () => Promise<({ image: string; release: string; author: string; id: number; title: string } | { image: string; release: string; author: string; id: number; title: string })[]>;
+
 	fetchAndSetBooksOnClient: () => Promise<void>;
 	readonly filteredBooks: any[];
 	readonly totalBooks: number;
@@ -40,11 +42,19 @@ class BooksStore implements BooksStoreProps {
 	activeSlideIndex: number
 	numbers: number;
 	locale: string;
-	calc: CalcProps;
+	calc: {
+		size?: string | undefined | any
+		variant?: string | undefined | any
+	};
 	news: {
 		post: [];
 		loading: boolean;
 	}
+	calcResult: {
+		data: [];
+		loading: boolean;
+	}
+
 	categories: {
 		data: [];
 		loading: boolean;
@@ -54,6 +64,10 @@ class BooksStore implements BooksStoreProps {
 	constructor() {
 		this.books = [];
 		this.categories = {
+			data: [],
+			loading: false
+		}
+		this.calcResult = {
 			data: [],
 			loading: false
 		}
@@ -74,6 +88,7 @@ class BooksStore implements BooksStoreProps {
 		this.activeSlideIndex = 0;
 		this.searchParam = "";
 		makeAutoObservable(this);
+
 	}
 
 	async fetchNews(locale: string | undefined) {
@@ -89,6 +104,31 @@ class BooksStore implements BooksStoreProps {
 			this.news.loading = false;
 		}
 	}
+	async fetchResult(locale: string | undefined) {
+		this.calcResult.data = []
+		this.calcResult.loading = true;
+
+		if(this.calc.size !== undefined && this.calc.variant !== undefined) {
+			try {
+				const result = await getData(queryCalcResult, {
+					"carclass": this.calc.size,
+					"series": this.calc.variant,
+					locale: locale
+				})
+
+				this.calcResult.data = result.data;
+				this.setResult(result.data)
+			} catch (error) {
+				console.error('Error', error);
+			} finally {
+				this.calcResult.loading = false;
+			}
+		} else  {
+			this.calcResult.data = []
+		}
+
+	}
+
 	async fetchCategories(locale: string | undefined) {
 		this.categories.loading = true;
 		try {
@@ -96,7 +136,6 @@ class BooksStore implements BooksStoreProps {
 				locale: locale
 			})
 			this.categories.data = data;
-			// set(this.categories, {data: categories.data});
 
 		} catch (error) {
 			console.error('Error', error);
@@ -115,6 +154,12 @@ class BooksStore implements BooksStoreProps {
 			cats: toJS(this.categories)
 		}
 	}
+	getResult = async ( locale:  string | undefined) => {
+
+		await this.fetchResult(locale);
+		let ready = !this.calcResult.loading;
+		if(ready) return  toJS(this.calcResult.data)
+	}
 	setCalcSize = (size: string) => {
 		this.calc = {
 			...this.calc,
@@ -122,6 +167,11 @@ class BooksStore implements BooksStoreProps {
 		}
 		console.log(this.calc)
 	}
+	setResult = (data: []) => {
+		this.calcResult.data = data
+		console.log(this.calcResult.data)
+	}
+
 	setCalcVariant = (variant: string) => {
 		this.calc = {
 			...this.calc,
@@ -129,6 +179,7 @@ class BooksStore implements BooksStoreProps {
 		}
 		console.log(this.calc.variant)
 	}
+
 	setSearchParam = (param: any) => {
 		this.searchParam = param;
 	};

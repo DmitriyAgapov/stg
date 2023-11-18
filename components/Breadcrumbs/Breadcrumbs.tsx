@@ -19,7 +19,7 @@ const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
 	>
 		{router.locale === "ru" ? 'Главная' : "Main"}
 	</Link>)
-	newAr.push(	<span key={id}> / </span>)
+	newAr.push(	<span key={id + id}> / </span>)
 	items.forEach((crumb, i) => {
 
 	const isLastItem = i === items.length - 1;

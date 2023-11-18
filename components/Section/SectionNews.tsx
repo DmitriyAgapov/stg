@@ -8,18 +8,17 @@ import { useStore } from "@/store";
 import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
 
-function SectionNews(props: { header: any, className: string, cards: any[], Links: any[] }) {
+function SectionNews(props: { header: any, className: string, cards: any[], Links: any[] | undefined }) {
 
 	let isGallery = true;
 	const router = useRouter()
 	let store = useStore();
 	const [data, setData] = useState()
+
 	useEffect(() => {
 		store.booksStore.lastNews(router.locale)
 			.then((r: any) => setData(r));
 	}, [store]);
-
-	// @ts-ignore
 
 	const cardsAr = data?.news?.post.map(card => <CardNews key={card.id}
 		headingVariant={HeadingVariants.h4}

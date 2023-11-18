@@ -1,39 +1,42 @@
 import Heading, { HeadingVariants } from "@/components/ui/Heading";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { Main } from "@/components/Section/Section";
-import testData from '@/utils/testData.json';
-import MapBasics from "@/components/Map/Map";
+import map from "@/public/map.png"
 import { getData } from "@/utils/getData";
 import { baseConfig } from "@/utils/queries/baseConfig";
-import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode } from "react";
+import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode, useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+import Image from "next/image";
+// @ts-ignore
+const DynamicMap = dynamic(() => import('@/components/Map/Map'), {})
 
 export default function Contacts(props: { locale: string, data: any }) {
 
 	const contactsCards = [
 		{
 			cardTitle: props.locale === "ru" ? "Телефоны" : "Phone",
-			properties: props.data.attributes.phone
+			properties: props.data.phone
 		},
 		{
 			cardTitle: props.locale === "ru" ? "Email" : "Email",
-			properties: props.data.attributes.email
+			properties: props.data.email
 		},
 		{
 			cardTitle: props.locale === "ru" ? "Адрес" : "Address",
 			properties: [
 				{
-					value: props.data.attributes.address
+					value: props.data.address
 				}
 			]
 		}
 	]
-	console.log(contactsCards[0].properties)
+
 	return (
 		<>
 
 			<Main className={'page-contacts justify-items-start'}
 				breadcrumbs={
-					<Breadcrumbs items={[ { label: props.locale === "ru" ? "Главная" : "Home", path: "/", }, { label: props.locale === "ru" ? "Контакты" : "Contacts", path: "/contacts", } ]}/>}
+					<Breadcrumbs items={[ { label: props.locale === "ru" ? "Контакты" : "Contacts", path: "/contacts", } ]}/>}
 
 				headingH1={<Heading className={'text-secondary2'}
 					type={HeadingVariants.h1}
@@ -47,7 +50,10 @@ export default function Contacts(props: { locale: string, data: any }) {
 					</div>
 				)}
 			>
-				<MapBasics />
+				<div className={'map_img'}>
+
+				</div>
+				<DynamicMap />
 
 
 			</Main>
@@ -57,13 +63,19 @@ export default function Contacts(props: { locale: string, data: any }) {
 		</>
 	)
 }
-export async function getStaticProps(props: {locale:string}) {
 
-	const {baseConfig: {data}} = await getData(baseConfig, props.locale, {})
+
+export async function getStaticProps(props: {
+	locale: string
+}) {
+
+	const { data } = await getData(baseConfig, {
+		locale: props.locale
+	});
 	return {
 		props: {
 			locale: props.locale,
-			data
+			data: data
 		},
 	}
 }

@@ -15,18 +15,7 @@ query Serie($slug: String!) {
     }
   }
 }`
-export const querySerieLocale = `
-${SeoPart} 
-${ProductPart}
-${SeriePartLocale}
-
-query SerieLocale($locale: I18NLocaleCode, $slug: String!) {
-  series(locale: $locale, filters: { slug: { eq: $slug } }) {
-    data {
-      ...SeriePartLocale
-    }
-  }
-}`
+export const querySerieLocale = ` ${SeoPart} ${ProductPart} ${SeriePartLocale} query SerieLocale($locale: I18NLocaleCode, $slug: String!) { series(locale: $locale, filters: { slug: { eq: $slug } }) { data { ...SeriePartLocale } } }`
 
 export const querySeriesLocale = `
 ${SeriePartLocale}

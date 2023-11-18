@@ -4,6 +4,7 @@
  */
 'use client'
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
+import { useRouter } from "next/router";
 
 
 type WindowDimentions = {
@@ -96,4 +97,25 @@ export function useIntersectionObserver(ref: MutableRefObject<Element | null>, o
 
 
 	return isIntersecting;
+}
+
+export function num_plural(value:number){
+	const words = ['лист','листа', 'листов']
+	value = Math.abs(value) % 100;
+	const num = value % 10;
+
+	if(num > 1 && num < 5) return `${value} ${words[1]}`;
+	if(num == 1) return `${value} ${words[0]}`;
+	if(value > 4) return `${value} ${words[2]}`;
+	return `${value} ${words[2]}`;
+}
+
+export function translateIt(key:string, dict: any) {
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const router = useRouter();
+	for (const k  in dict) {
+		if(k === key)  {
+			return router.locale === 'ru' ? dict[k][0] : dict[k][1]
+		}
+	}
 }

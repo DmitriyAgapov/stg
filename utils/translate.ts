@@ -1,6 +1,40 @@
-export const translateText = (value: string, locale: string) => {
+import { useRouter } from "next/router";
+
+export const translateText = (value: string) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const router = useRouter();
     if (value in translate) {
-        return translate[value][locale]
+        // @ts-ignore
+        return translate[value][router.locale]
+    }
+    return value
+}
+const translations = {
+    productProperties: {
+        labels: {
+
+            thickness: [ 'Толщина', 'Thickness' ],
+            size: [ 'Размер', 'Size' ],
+
+            'quanity_in_box': [ 'Количество в упакове', 'Quantity in package' ],
+            sqrt: [ 'Площадь', 'square' ],
+            'specific_weight': [ 'Вес уп-ки, кг', 'Weight package' ],
+            weight: [ 'Вес', 'Weight' ],
+            kmp: [ 'Кмп', 'Mechanical loss coefficient' ],
+            adhesion: [ 'Адгезия', 'Adhesion' ],
+            temp: [ 'Температура', 'Temperature' ]
+        },
+        values: {
+            place: {
+                'door': ['Дверь','door'],
+                'floor': ['Пол','floor'],
+                'roof': ['Крыша','roof'],
+                'arches': ['Арки','arches'],
+                'hood': ['Капот','hood'],
+                'trunklid': ['Крышка багажника','trunklid'],
+                'luggage_rack': ['Багажник','luggage_rack']
+            }
+        }
     }
 }
 export const translate:any = {
@@ -8,6 +42,23 @@ export const translate:any = {
             en: "door",
             ru: "Дверь"
         },
+        type: {
+            en: "Type",
+            ru: "Тип"
+        },
+        series: {
+            en: "Series",
+            ru: "Серия"
+        },
+        place: {
+            ru:  'Место применения',
+            en:  'Place of application'
+        },
+        floor: {
+            en: "floor",
+            ru: "Пол"
+        },
+
         roof: {
             en: "roof",
             ru: "Крыша"
@@ -33,7 +84,7 @@ export const translate:any = {
             ru: "размер"
         },
          thickness: {
-            en: "thickness",
+            en: "Thickness",
             ru: "толщина, мм"
         },
          quanity_in_box: {
