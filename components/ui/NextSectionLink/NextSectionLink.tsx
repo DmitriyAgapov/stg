@@ -1,11 +1,32 @@
 import styles from './NextSectionLink.module.scss';
-import svg from  "@/public/icons/Chevron_down.svg";
-import Image from "next/image";
 import { useRouter } from "next/router";
+import { useEffect,useState } from "react";
+const Icon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Navigation/Chevron_down"><path id="Intersect" fillRule="evenodd" clipRule="evenodd" d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" fill="#4B5563"/></g></svg>
 
-const NextSectionLink = () => {
+const NextSectionLink = ({ indexEl }:any) => {
+	const [action, setAction] = useState( () => void undefined);
+
+	const handleScroll = () => {
+
+	// @ts-ignore
+		action && action.scrollIntoView({
+			block: "start",
+			behavior: "smooth",
+			inline: "end"
+		})
+	}
+	useEffect(() => {
+		if(window !== undefined) {
+			// @ts-ignore
+			setAction(() => document.querySelectorAll('section')[indexEl])
+		}
+	}, []);
+
 	const router = useRouter()
-	return <a className={styles.NextSectionLink + " next_link"}>{router.locale === "ru" ? "Далее" : "Next"}<Image src={svg} alt={''}/></a>;
+	return <a onClick={handleScroll} className={styles.NextSectionLink + " next_link"}>
+		{router.locale === "ru" ? "Далее" : "Next"}
+		<Icon />
+	</a>;
 };
 
 export default NextSectionLink;

@@ -1,5 +1,6 @@
 import React from "react";
 import Section from "@/components/Section/Section";
+import type { APIResponse, APIResponseCollection, APIResponseCollectionMetadata, APIResponseData, GetValue,GetValues } from "@/types/types";
 import testData from '@/utils/testData.json'
 import { getData } from "@/utils/getData";
 import { queryCatalogPage, queryMainPage } from "@/utils/queries/pageQuery";
@@ -12,18 +13,23 @@ export default function Home(props:any) {
 
     return (
         <>
-            {props.data.sections.map((section:any) => <Section
-                key={section.id}
-                className={section.type}
-                header={section.title}
-                shortText={section.shortText}
-                nextLink={section.nextLink}
-                // @ts-ignore
-                media={section.media}
-                cards={section.cards}
-                series={section.series}
-                background={section.background}
-            />)}
+            {props.data.sections.map((section:any, index: number) => {
+
+                return <Section
+                    key={section.id}
+                    className={section.type}
+                    header={section.title}
+                    shortText={section.shortText}
+                    nextLink={section.nextLink}
+                    indexEl={index == 0 ? 1 : undefined}
+                    // @ts-ignore
+                    Links={section.Links}
+                    media={section.media}
+                    cards={section.cards}
+                    series={section.series}
+                    background={section.background}
+                />
+            })}
 
 
             {/*<Section className={about.class}*/}
@@ -126,8 +132,7 @@ export default function Home(props:any) {
 }
 
 export async function getStaticProps(props: { locale: string}) {
-
-    const { data }   = await getData(queryMainPage, {
+    const { data }  = await getData(queryMainPage, {
         locale: props.locale
     });
 

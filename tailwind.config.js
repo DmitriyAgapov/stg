@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
 const {nextui} = require("@nextui-org/react");
 const plugin = require('tailwindcss/plugin')
 module.exports = {
@@ -16,6 +17,10 @@ module.exports = {
     // "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      '1.5xl': '1440px',
+      ...defaultTheme.screens,
+    },
     fontSize: {
       xs: '.75rem',
       sm: '.875rem',

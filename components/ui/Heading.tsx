@@ -14,7 +14,7 @@ const Heading = ({type, text, className} : HeadingProps) => {
 	let heading;
 	switch (type) {
 		case 'h1' :
-			heading = <h1 className={`my-6 leading-[4.5rem] mb-10`+ ' ' + className}>{text}</h1>;
+			heading = <h1 className={`text-2xl lg:text-4xl my-6 leading-tight xl:leading-[4.5rem] mb-10 `+ ' ' + className}>{text}</h1>;
 			break;
 		case 'h2' :
 			heading =  <h2 className={className}>{text}</h2>;

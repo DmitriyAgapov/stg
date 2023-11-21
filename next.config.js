@@ -4,7 +4,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const nextConfig = {
 
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', '127.0.0.1'],
   },
   i18n: {
     locales: ['ru', 'en'],
@@ -17,6 +17,16 @@ const nextConfig = {
         source: '/catalog/series/:slug',
         destination: '/series/:slug', // The :path parameter is used here so will not be automatically passed in the query
       },
+        {
+        source: '/catalog/category/:slug',
+        destination: '/category/:slug', // The :path parameter is used here so will not be automatically passed in the query
+      },
+          {
+        source: '/:url',
+        destination: '/page/:url', // The :path parameter is used here so will not be automatically passed in the query
+      }
+
+
     ]
   },
   // webpack: (config) => {

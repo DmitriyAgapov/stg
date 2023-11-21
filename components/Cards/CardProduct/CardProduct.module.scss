@@ -15,7 +15,7 @@
   transform: translateY(0);
   background-color: white;
   z-index: 5;
-  gap: 1rem;
+
   grid-template-columns: var(--gridinner);
 
 
@@ -25,14 +25,38 @@
   grid-column: span 4;
   grid-row: 1/3;
   overflow: hidden;
+  height: 100%;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   img {
     transition: scale .25s ease-in-out;
+    height: 100%;
+    object-fit: contain;
   }
 }
 .button {
   margin-top: 1rem;
   grid-column: -5/-1;
+}
+.propertiesProduct {
+  grid-column: span 4;
+  @media screen and (min-width: 1200px){
+    grid-column: span 8;
+  }
+
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .75rem;
+
+}
+.card__properties {
+  span {
+    min-width: 2rem;
+    min-height: 2rem;
+  }
 }
 .properties {
 
@@ -45,9 +69,9 @@
   display: grid;
   grid-template-columns: subgrid;
   gap: .75rem;
-  > * {
-    grid-column: span 4;
-
+  span {
+    min-width: 2rem;
+    min-height: 2rem;
   }
 }
 .container {
@@ -69,13 +93,32 @@
   z-index: 5;
 
 }
+.CardSimpleProduct {
+  height: 100%;
+  @apply   grid;
+  //grid-template-rows: auto auto 3rem auto;
+
+}
+.card__imgSimple {
+  order: -1;
+  grid-column: span 4;
+  grid-row: 1/3;
+  overflow: hidden;
+  position: relative;
+  min-height: 250px;
+  img {
+    object-fit: contain;
+    height: 100%;
+    transition: scale .25s ease-in-out;
+  }
+}
 .card {
 	grid-column: span 3;
   margin: -1px;
   	@apply   grid;
   //max-height: 20rem;
   &:hover {
-	//cursor: pointer;
+    position: relative;
 	z-index: 10;
 	.container {
 	  @apply  border-primary;
@@ -92,33 +135,53 @@
   }
 
 
-  &:hover {
-	position: relative;
 
-	//.slidePanel {
-	//  padding: 0  1.5rem 2rem;
-	//  //transform: translateY(-50px);
-	//  max-height: 100%;
-	//  z-index: 5;
-	//  opacity: 1;
-	//  transition: opacity .15s 0s;
-	//  @apply  border-primary;
-	//  background-color: white;
-    //
-	//}
-  }
 }
 
 .title {
   grid-column: span 4;
+
+  @apply xl:col-span-8;
+
   margin-bottom: .5rem;
+  &:before {
+
+  }
   //order: 1;
 	h3 {
-		@apply font-bold capitalize;
+		@apply font-bold capitalize mb-4;
 	}
+}
+.titleSimple {
+  grid-column: span 4;
+  margin-bottom: .5rem;
+  &:before {
+
+  }
+  //order: 1;
+  h3 {
+    @apply font-bold capitalize;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+  }
+}
+
+.subtitle {
+  grid-column: span 4;
+  margin: .5rem 0;
+  @apply text-sm text-gray-600 capitalize;
 }
 .card__tag {
   padding: .5rem;
+  min-width: 6rem;
+  text-align: center;
   @apply bg-secondary text-white;
 }
 .card__tags {
@@ -130,7 +193,7 @@
 
 }
 .card__dt {
-  @apply text-sm text-gray-400 mb-2;
+  @apply text-sm text-gray-500 mb-2 font-normal capitalize;
 }
 .card__dd {
   @apply text-sm text-base font-bold;
@@ -138,9 +201,10 @@
 }
 .properties_checkbox_inset {
 
-    width: 2rem;
-    height: 2rem;
-    display: inline-flex;
+  min-width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  padding: 0 0.25rem;
     align-items: center;
     justify-content: center;
     border: 1px solid ;
@@ -151,6 +215,8 @@
 }
 .card__prop {
   display: block;
+
+ grid-column: span 4;
   @media screen and (max-width: 1023px){
     margin: .5rem 0;
   }

@@ -46,7 +46,7 @@ export const CalcCard = observer((props: {
 	const CurIcon = () => keySize[0].svg;
 
 	return <div className={"card card_calc"} data-active={store.booksStore.calc.size === props.size?.slug ? true : null} onClick={event => {
-		console.log('click', store.booksStore.calc)
+		// console.log('click', store.booksStore.calc)
 		if(props.size) {
 			if (!store.booksStore.calc.size) {
 				store.booksStore.setCalcSize(props.size.slug)
@@ -82,7 +82,7 @@ export const CalcCardVariant = observer((props: {
 		} else if(store.booksStore.calc.variant && store.booksStore.calc.variant === props.variant.slug) {
 			store.booksStore.setCalcVariant(undefined);
 		}}
-			console.log('clickVar', store.booksStore.calc)
+			// console.log('clickVar', store.booksStore.calc)
 		}
 	}><h4>{props.variant?.title}</h4><span>{props.variant?.subTitle}</span></div>;
 });

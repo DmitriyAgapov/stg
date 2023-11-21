@@ -1,14 +1,12 @@
 import Heading, { HeadingVariants } from "@/components/ui/Heading";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { Main } from "@/components/Section/Section";
-import map from "@/public/map.png"
 import { getData } from "@/utils/getData";
 import { baseConfig } from "@/utils/queries/baseConfig";
-import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode, useState, useEffect } from "react";
-import dynamic from "next/dynamic";
+import styles from "@/components/Map/Map.module.scss";
+import React from "react";
+import map from "@/public/map.png";
 import Image from "next/image";
-// @ts-ignore
-const DynamicMap = dynamic(() => import('@/components/Map/Map'), {})
 
 export default function Contacts(props: { locale: string, data: any }) {
 
@@ -33,32 +31,25 @@ export default function Contacts(props: { locale: string, data: any }) {
 
 	return (
 		<>
-
 			<Main className={'page-contacts justify-items-start'}
-				breadcrumbs={
-					<Breadcrumbs items={[ { label: props.locale === "ru" ? "Контакты" : "Contacts", path: "/contacts", } ]}/>}
 
+				breadcrumbs={<Breadcrumbs items={[ { label: props.locale === "ru" ? "Контакты" : "Contacts", path: "/contacts", } ]}/>}
 				headingH1={<Heading className={'text-secondary2'}
-					type={HeadingVariants.h1}
-					text={props.locale === "ru" ? 'Контакты' : "Contacts"}/>}
+				type={HeadingVariants.h1}
+				text={props.locale === "ru" ? 'Контакты' : "Contacts"}/>}
 				cards={contactsCards.map((it, index: number) => <div className={`card-contacts contacts_item`}
 					key={index + it.cardTitle}>
-					<h4 className={'text-gray-500 font-semibold'}>{it.cardTitle}</h4>
-					<ul className={'pl-0 list-none'}>
-						{it.properties.map((pr: { id: Key | null | undefined; value: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined; }) => <li className={'text-base text-xl font-semibold'} key={pr.id}>{pr.value}</li>)}
+						<h4 className={'text-gray-500 font-semibold'}>{it.cardTitle}</h4>
+						<ul className={'pl-0 list-none'}>
+							{it.properties.map((pr: any, index: number) => <li className={'text-base text-xl font-semibold'} key={pr.id + index}>{pr.value}</li>)}
 						</ul>
 					</div>
 				)}
 			>
-				<div className={'map_img'}>
-
-				</div>
-				<DynamicMap />
-
-
-			</Main>
-
-			{/* eslint-disable-next-line react/jsx-no-undef */}
+			<div className={styles.map} id={"map"} style={{width: "100%", height: "550px", gridColumn: "1/-1"}}>
+				<Image src={map} alt={''} layout={"fill"} fill style={{width:'100%', height: "100%", objectFit: "cover"}}/>
+			</div>
+		</Main>
 
 		</>
 	)

@@ -5,13 +5,39 @@
   align-items: center;
   position: absolute;
   z-index: 111;
+  gap: .5rem;
+  line-height: 24px;
   left: 0;
   color: rgba(75, 85, 99, 1);
   cursor: pointer;
   padding: .5rem;
   font-weight: 600;
   bottom: 3rem;
+  width: 66px;
+  height: 68px;
   text-align: center;
+  transition: all .3s .15s ease-in-out;
+  path {
+
+    transition: all .15s ease-in-out;
+  }
+  &:hover, &:focus {
+    height: 80px;
+    transition: all .3s .15s ease-in-out;
+    transform-origin: top center;
+    transform: translateY(14px);
+    @apply bg-primary text-white fill-white;
+    path {
+      fill: white;
+      transition: all .15s ease-in-out;
+    }
+  }
+  svg {
+    width: 1.5rem;
+    display: block;
+    height: 1.5rem;
+    overflow: initial;
+  }
   img {
 
   }

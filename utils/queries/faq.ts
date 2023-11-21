@@ -1,0 +1,1 @@
+export const queryFaq = `query Faq($locale: I18NLocaleCode, $slug: String) { faqs(locale: $locale, filters: { slug: { eq: $slug } }) { __typename data { __typename id attributes { title text slug question { description id text } } } } }`

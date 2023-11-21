@@ -1,8 +1,10 @@
 import React from 'react';
 import Script from "next/script";
 import styles from './Map.module.scss'
-import map from "@/public/map.png";
-import Image from "next/image";
+
+import YaMap from "@/components/Map/YaMap";
+import NewMap from "@/components/Map/NewMap";
+
 const MapBasics = () => {
 
 	return (
@@ -26,7 +28,7 @@ const MapBasics = () => {
 			{/*	});`}}*/}
 			{/*/>*/}
 		<div className={styles.map} id={"map"} style={{width: "100%", height: "550px", gridColumn: "1/-1"}}>
-			<Image src={map} alt={'Карта'} />
+		<NewMap/>
 		</div></>
 	)
 };

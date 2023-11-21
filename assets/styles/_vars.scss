@@ -60,15 +60,17 @@
   --centered: 2/-2;
   --full_centered: 1/-1;
 
-  @media screen and (max-width: 1199px){
+  @media screen and (max-width: 1279px){
 	--gridGap: 16px;
 	--totalCol: 8;
 	--centered: 3/-3;
+	--sideGutter: 1rem;
   }
   @media screen and (max-width: 767px){
 	--gridGap: 16px;
 	--totalCol: 4;
 	--centered: 2/-2;
+	--sideGutter: 1rem;
   }
 }
 
@@ -114,6 +116,13 @@
   html {
 	font-family: 'Inter', sans-serif;
   }
+
+
+  @media screen and (max-width: 1279px){
+	h2 {
+	  font-size: 1.5rem;
+	}
+  }
 }
 html,
 body {
@@ -138,6 +147,7 @@ a {
   }
 }
 header, main, footer {
+
   display: grid;
   grid-template-columns: var(--grid);
   gap: 0 var(--gridGap);
@@ -145,6 +155,9 @@ header, main, footer {
   > *, > .container {
 	grid-column: 2/-2;
 
+	@media screen and (min-width: 767px){
+	  //display: grid;
+	}
 	@media screen and (max-width: 1199px){
 	  margin: 0;
 	  max-width: 100%;
@@ -163,4 +176,21 @@ header, main, footer {
   min-height: 52px;
   @apply hover:bg-opacity-10 hover:bg-white;
 
+}
+
+*::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar-thumb
+{
+  background-color: #000000;
 }

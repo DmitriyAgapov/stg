@@ -3,16 +3,16 @@ import Section from "@/components/Section";
 import { Main } from "@/components/Section/Section";
 import { SectionCards } from "@/components/Section/SectionCards";
 import React from "react";
-import FormQuestions from "@/components/Form";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { getData } from "@/utils/getData";
 import { queryCatalogPage } from "@/utils/queries/pageQuery";
+
 export default function PageCatalog(props: any) {
 
 	return (
 		<>
 
-			<Main className={'mainPage'}
+			<Main className={'mainPage page-catalog'}
 				breadcrumbs={<Breadcrumbs items={[
 					{
 						label: props.data.title,
@@ -21,8 +21,8 @@ export default function PageCatalog(props: any) {
 				]}/>}
 				headingH1={
 					<Heading className={'text-secondary2 mb-10'}
-					type={HeadingVariants.h1}
-					text={props.data.title}/>
+						type={HeadingVariants.h1}
+						text={props.data.title}/>
 				}
 				shortText={props.data.description}>
 

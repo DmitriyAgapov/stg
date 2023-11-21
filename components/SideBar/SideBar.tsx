@@ -8,6 +8,7 @@ import StgButton from "@/components/ui/StgButton";
 import { Button } from "@nextui-org/button";
 import { Accordion, AccordionItem, Checkbox, CheckboxGroup, Menu, MenuItem, Radio, RadioGroup } from "@nextui-org/react";
 import { backUrl } from "@/utils/utils";
+import NextLink from "next/link";
 export interface NavProps {
 	tags?: TagProp[],
 	parentLink?:
@@ -19,14 +20,15 @@ export interface NewsProps {
 	className?: string,
 	cards?: {},
 	nav?:  any
+	linksstyle?: string
 	links?: any[]
 }
 export interface TagProp {
 	title:string,
 	slug: string
 }
-const SideBar = ({className, nav, links}:NewsProps) => {
-	console.log(links)
+const SideBar = ({className, nav, links,  linksstyle, ...props }:NewsProps) => {
+
 	const id = useId();
 	return <nav className={styles.container + " sidebar " + className}>
 		{nav && <ul className={styles.list}>
@@ -37,7 +39,20 @@ const SideBar = ({className, nav, links}:NewsProps) => {
 
 		</ul>}
 
-		{links && links.map(l => <StgButton key={l.id} as={Link} color={"outline"} href={l.url}>{l.text}</StgButton>)}
+		{links  && links.length > 0 ? <div className={'sidbar__links flex justify-center'}>
+			{links.map(l =>
+
+					<StgButton as={NextLink}
+						className={"flex-1"} key={l.id}
+						size={"sm"} variant={"darkOutline"} color={linksstyle ?? "outline"}
+						href={l.url }>{l.text}
+					</StgButton>
+			// <StgButton key={l.id} as={Link} color={"outline"} href={l.url}>{l.text}</StgButton>
+)}</div> : links && links.query !== undefined && <StgButton as={NextLink}
+			className={"flex-1"} key={'button'}
+			size={"sm"} variant={"darkOutline"} color={linksstyle ?? "outline"}
+			href={links}>{props.linktitle}
+		</StgButton>}
 	</nav>;
 }
 const ProductPropsVariants = (props: { items:any[], type:any }) => {

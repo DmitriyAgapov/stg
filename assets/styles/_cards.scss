@@ -1,3 +1,11 @@
+.card__text {
+  & > *:first-child {
+    margin-top: 0;
+  }
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}
 .news__card {
   display: grid;
   gap: 2rem;
@@ -30,10 +38,32 @@
   }
   &.horizontal {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr;
     row-gap: 0;
     margin-bottom: 2rem;
+    .card__img {
+      img {
+        width: 100%;
+      }
+    }
+    h4 {
+      margin: 1rem 0 1.5rem;
+    }
+    @media screen and (min-width: 768px){
+      h4 {
+        margin: 0 0 1.5rem;
+      }
+      .card__img {
+        img {
+          width: 100%;
+        }
+      }
+      .card__date {
+        margin-top: 1rem;
+      }
+      grid-template-columns: 375px 1fr;
+    }
     .card__text {
 
     }
@@ -56,7 +86,7 @@
   fill: white;
   display: flex;
   flex-direction: column;
-  height: 8rem;
+  min-height: 8rem;
   padding: 1.25rem;
   gap: 1rem;
   text-align: initial !important;
@@ -71,13 +101,22 @@
     background-color: rgba(255, 71, 64, 0.95);
     text-align: initial;
   }
+  .card__text {
+    @apply text-sm;
+  }
   .card__img {
     opacity: 1 !important;
     order: -1;
   }
 }
-.card__properties {
 
+.card__properties {
+  &.card_not_inbox {
+    span {
+      min-width: initial;
+      min-height: initial;
+    }
+  }
   .card__dd {
     span {
       display: inline-flex;
@@ -92,16 +131,16 @@
   cursor: pointer;
   @media screen and (min-width: 768px) and (max-width: 1199px){
     grid-column: span 4;
-    &:nth-child(2n + 1) {
-      margin-right: calc(0px - (var(--gridGap) * 2) / 3);
-    }
-    &:nth-child(2n + 2) {
-      margin: 0 calc(0px - (var(--gridGap)) / 3);
-    }
+    //&:nth-child(2n + 1) {
+    //  margin-right: calc(0px - (var(--gridGap) * 2) / 3);
+    //}
+    //&:nth-child(2n + 2) {
+    //  margin: 0 calc(0px - (var(--gridGap)) / 3);
+    //}
 
 
   }
-  @media screen and (min-width: 1200px ) {
+  @media screen and (min-width: 1280px ) {
     grid-column: span 4;
     &:nth-child(3n + 1) {
       margin-right: calc(0px - (var(--gridGap) * 2) / 3);
@@ -254,5 +293,14 @@
         order: 3;
         @apply text-gray-600 pt-4;
       }
+  }
+}
+.cards__partner {
+
+}
+.card__partner {
+  &:before {
+    content:  counters(list-item, ".") " ";
+    @apply text-primary text-3xl font-bold;
   }
 }

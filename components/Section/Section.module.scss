@@ -1,16 +1,24 @@
 .container {
 	display: grid;
 	grid-template-columns: var(--grid);
-	gap: 0 var(--gridGap);
+  gap: 0;
+  margin: 4rem 0;
 
+  @media screen and (min-width: 1280px){
+	gap: 0 var(--gridGap);
+  }
   	> *:not([class^="inner_menu"]), > .container {
 
 		@media screen and (max-width: 1199px){
-			margin: 0;
+			//margin: 0;
 			max-width: 100%;
 			width: 100%;
 		}
   }
+	> h1, h2, h3, h4 {
+	  line-height: 1.25;
+		margin-bottom: 2rem;
+	}
 }
 .text {
   display: block;
@@ -24,7 +32,11 @@
 	box-sizing: border-box;
 }
 .mainPage {
-  padding: 4rem 0;
+  @apply py-12;
+  @media screen and (min-width: 1280px){
+	padding: 4rem 0 7.5rem;
+  }
+
 }
 .media {
   box-sizing: border-box;

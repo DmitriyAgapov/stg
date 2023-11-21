@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import CardProduct from "@/components/Cards/CardProduct";
 import TextBlockRenderer from "@/components/ui/TextBlockRenderer/TextBlockRenderer";
 import CardSimpleProduct from "@/components/Cards/CardProduct/CardSimpleProduct";
+import CardUI from "@/components/Cards/CardUI/CardUI";
 
 function SectionRelated(props: any) {
 
@@ -21,19 +22,27 @@ function SectionRelated(props: any) {
 	// 	store.booksStore.lastNews(router.locale)
 	// 		.then((r: any) => setData(r));
 	// }, [store]);
-
+	// console.log(props.cards[4].product_category.title)
 	// @ts-ignore
-	console.log(props)
+
 	const cardsAr = props.cards.map(card => <CardSimpleProduct key={card.id}
 		headingVariant={HeadingVariants.h4}
-		img={card.image}
+		img={card.images[0]}
 		title={card.title}
+		properties={{
+			class: card.class,
+			category: card.product_category
+		}}
 		style={" card-product related"}
-		link={`/blog/${card.slug}`}>
+		link={card.slug}
+		{...card}
+	>
 		<div className={'card__category text-sm font-semibold  text-gray-400 capitalize'}><span>{card.product_category.title.toLowerCase()}</span></div>
 	</CardSimpleProduct>);
 
+
 	return <section className={`section ${styles.container} related`}>
+
 		{props.header && <h2 className={'section__title'}>{props.header}</h2>}
 		{props.shortText  ? <div className={`section__shortText`}><TextBlockRenderer text={props.shortText }/></div> : null}
 		{/*{text && <div className={`section__text ${styles.text}`}><TextBlockRenderer text={text}/></div>}*/}
@@ -49,8 +58,11 @@ function SectionRelated(props: any) {
 		{/*		alt={''}/>*/}
 		{/*</div>}*/}
 		<SideBar className={"news"}
-			links={props.Links}
 			// @ts-ignore
+			links={{ pathname: '/catalog/[category]', query: { category: props.Links[0].url } }}
+			// @ts-ignore
+			linktitle={props.Links[0].text}
+		  pathname={'/catalog/[category]'} query={{ category: props.Links[0].url  }}
 			/>
 	</section>
 

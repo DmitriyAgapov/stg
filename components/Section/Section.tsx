@@ -19,6 +19,9 @@ import testData from "@/utils/testData.json";
 import SectionNews from "@/components/Section/SectionNews";
 import SectionRelated from "@/components/Section/SectionRelated";
 import { CalcCard, CalcCardVariant } from "@/components/Calc/Calc";
+import StgButton from "@/components/ui/StgButton";
+import NextLink from "next/link";
+import { CardBox, CardsListWithCounter, CardWithCounter } from "@/components/Cards/CardSimple/CardSimple";
 // @ts-ignore
 const VideoOnlyClient = dynamic((props) => import('@/components/Video'), {
 	ssr: false,
@@ -38,6 +41,7 @@ export interface SectionProps {
 	text?: string | ReactNode
 	cards?: any
 	series?: any
+	indexEl?: number
 	Links?: any[]
 	className?: string
 	media?: ReactNode | {
@@ -57,49 +61,47 @@ export interface SectionProps {
 }
 
 
-const Section = ({ header, Links, children, breadcrumbs, nextLink = false, headingH1, shortText, media, background, text, cards, action, className = "", sidebar, isGallery = false, ...props }: SectionProps) => {
+const Section = ({ header, Links, children, breadcrumbs, indexEl, nextLink = false, headingH1, shortText, media, background, text, cards, action, className = "", sidebar, isGallery = false, ...props }: SectionProps) => {
 	const cardsAr = [];
 	const router = useRouter()
-	const childrenArray = [children];
+	const childrenArray = [ children ];
 
 	switch (className) {
 		case 'screen':
 			cardsAr.push(props.series.map((card: { id: string; title: string | undefined; description: any; slug: string; imglogo: ImageDefault | undefined; }) =>
-				<Card
-					key={card.id}
-				title={card.title}
-				style={' HOVER'}
-				text={card.description}
-				link={process.env.NEXT_PUBLIC_BACK_URL + '/catalog/' + card.slug}
-				img={card.imglogo}/>))
+				<Card key={card.id}
+					title={card.title}
+					style={' HOVER'}
+					text={card.description}
+					link={'/catalog/series/' + card.slug}
+					img={card.imglogo}/>))
 			break;
 
 		case 'about':
 			cards.forEach((c: { id: React.Key | null | undefined; text: string | undefined; link: string | undefined; image: ImageDefault | undefined; }) => cardsAr.push(
-					<Card key={c.id}
-						headingVariant={HeadingVariants.h2}
-						title={c.text}
-						style={' about-card HOVER'}
-						link={c.link}
-						action={false}
-						img={c.image}/>)
+				<Card key={c.id}
+					headingVariant={HeadingVariants.h3}
+					title={c.text}
+					style={' about-card HOVER'}
+					link={c.link}
+					action={false}
+					img={c.image}/>)
 			)
 			break;
 
 		case 'geography':
 			cards.forEach((c) => cardsAr.push(
-			<Card headingVariant={HeadingVariants.h4}
-				key={c.id}
-				title={c.text}
-				style={" geography__card"}
-				text={c.description}/>));
+				<Card headingVariant={HeadingVariants.h4}
+					key={c.id}
+					title={c.text}
+					style={" geography__card"}
+					text={c.description}/>));
 			break;
 
 		case 'page-serie':
-			cards.forEach((i:any) => {
+			cards.forEach((i: any) => {
 				cardsAr.push(
-					<CardProduct
-						style={"-product  product__card"}
+					<CardProduct style={"-product  product__card"}
 						title={i.title}
 						key={i.id}
 						// @ts-ignore
@@ -113,35 +115,79 @@ const Section = ({ header, Links, children, breadcrumbs, nextLink = false, headi
 						series={i.series}
 						headingVariant={HeadingVariants.h3}
 						img={i.images[0]}
-						link={`/catalog/${i.series[0].slug}/${i.slug}`}
+						link={i.slug}>
+					</CardProduct>)
+			});
+			break;
+
+		case 'page-catalog-category':
+			cards.forEach((i: any) => {
+				cardsAr.push(
+					<CardProduct style={"-product  product__card"}
+						title={i.title}
+						key={i.id}
+						// @ts-ignore
+						locale={router.locale}
+						properties={{
+							variants: i.variants,
+							class: i.class,
+							place: i.place,
+							type: i.product_category
+						}}
+						series={i.series.length > 0 ? i.series : undefined}
+						headingVariant={HeadingVariants.h3}
+						img={i.images[0]}
+						link={i.slug}
 
 					>
 					</CardProduct>)
 			});
 			break;
+			console.log(Links)
 		case 'news':
-			return <SectionNews className={'news'} Links={Links} header={header} cards={cards}/>
+			return <SectionNews className={'news'}
+				Links={Links}
+				header={header}
+				cards={cards}/>
 
 		case 'related':
-			return <SectionRelated className={'related'}  shortText={shortText} Links={Links} header={header} cards={props.products}/>
+			return <SectionRelated className={'related'}
+				shortText={shortText}
+				Links={Links}
+				header={header}
+				cards={props.products}/>
 
 
 		case 'form_questions':
 			childrenArray.push(<FormQuestions/>);
 			break;
 
-		case 'calc_car_class':
-			cards.forEach((i:any) => {
+		case 'parternership_one':
+			cards.forEach((i: any) => {
 				cardsAr.push(
-					<CalcCard
-						key={i.id}
+					<CardBox title={i.text}
+						text={i.description}
+						key={i.id}/>
+				)
+			});
+
+			break;
+
+		case 'parternership_two':
+			cardsAr.push(<CardsListWithCounter ar={cards}/>)
+			break;
+
+		case 'calc_car_class':
+			cards.forEach((i: any) => {
+				cardsAr.push(
+					<CalcCard key={i.id}
 						size={i}/>
 				)
 			});
 			break;
 
 		case 'calc_series':
-			cards.forEach((i:any) => {
+			cards.forEach((i: any) => {
 				cardsAr.push(
 					<CalcCardVariant key={i.id}
 						variant={i}/>)
@@ -151,17 +197,17 @@ const Section = ({ header, Links, children, breadcrumbs, nextLink = false, headi
 	return (
 		<section className={`section ${styles.container} ${className}`}>
 			{breadcrumbs && breadcrumbs}
-			{nextLink && <NextSectionLink />}
+			{nextLink && <NextSectionLink indexEl={indexEl}/>}
 			{headingH1 && headingH1}
 			{sidebar && sidebar}
 			{header && <h2 className={'section__title'}>{header}</h2>}
-			{shortText  ? <div className={`section__shortText`}><TextBlockRenderer text={shortText}/></div> : null}
+			{shortText ? <div className={`section__shortText`}><TextBlockRenderer text={shortText}/></div> : null}
 			{text && <div className={`section__text ${styles.text}`}><TextBlockRenderer text={text}/></div>}
-			{(cardsAr && cardsAr.length > 0) && <div className={`section__cards ${styles.cards}`}>{isGallery ? <Slider items={cardsAr}/> : cardsAr }</div>}
-			{media && <div className={`section__media ${styles.media  && styles.media}`}>{media?.mime.indexOf('video') === 0 ? <VideoOnlyClient src={process.env.NEXT_PUBLIC_BACK_URL + media?.url}/> : null }</div>}
-			{background && background &&  <div className={`section__media ${styles.media  && styles.media}`}>
-				<Image
-					style={{ objectFit: "cover", width: "100%"}}
+			{(cardsAr && cardsAr.length > 0) && <div className={`section__cards ${styles.cards}`}>{isGallery ? <Slider items={cardsAr}/> : cardsAr}</div>}
+			{media && <div className={`section__media ${styles.media && styles.media}`}>{media?.mime.indexOf('video') === 0 ?
+				<VideoOnlyClient src={process.env.NEXT_PUBLIC_BACK_URL + media?.url}/> : null}</div>}
+			{background && background && <div className={`section__media ${styles.media && styles.media}`}>
+				<Image style={{ objectFit: "cover", width: "100%" }}
 					src={process.env.NEXT_PUBLIC_BACK_URL + background?.url}
 					fill={className === "about"}
 					width={(className !== "about") && background?.width}
@@ -173,42 +219,56 @@ const Section = ({ header, Links, children, breadcrumbs, nextLink = false, headi
 	);
 };
 
-export const Main = ({ children, sidebar,upTitle, header,breadcrumbs, headingH1,  nextLink = false, shortText, media, text, cards, action, className = "", isGallery = false }: SectionProps) => {
-return (
-		<main className={`${styles.mainPage} ${className}`}>
+export const Main = ({ children, sidebar, upTitle, indexEl, header, breadcrumbs, headingH1, Links, nextLink = false, shortText, media, text, cards, action, className = "", isGallery = false }: SectionProps) => {
+	const AllLinks = () => Links && Links.length > 0 && <div className={"page__links flex gap-4 col-span-full flex-wrap"}> {Links.map((l) => <StgButton as={NextLink}
+		className={"flex-auto"}
+		key={'button' + l.id}
+		size={"sm"}
+		variant={"darkOutline"}
+		color={"outline"}
+		href={l.url}>{l.text}</StgButton>)}</div>
+
+	return (
+		<main className={`${styles.mainPage + " " + " "} ${className}`}>
 			{breadcrumbs && breadcrumbs}
-			{nextLink && <NextSectionLink />}
+			{nextLink && <NextSectionLink indexEl={indexEl}/>}
 			{upTitle && <div className={'section__upTitle'}>{upTitle}</div>}
 			{headingH1 && <div className={'section__title'}>{headingH1}</div>}
 			{sidebar && sidebar}
 			{header && <h2 className={'section__title'}>{header}</h2>}
-			{shortText && <div className={`section__shortText ${styles.shortText}`} >
+			{shortText && <div className={`section__shortText ${styles.shortText}`}>
 				<Blocks data={JSON.parse(shortText)}/></div>}
+			<AllLinks/>
 			{text &&
 				<div className={`section__text ${styles.text}`}>
-					<Blocks data={JSON.parse(text)} />
-					</div>}
-			{cards && <div className={`section__cards ${styles.cards}`}>{isGallery ? <Slider items={cards}/> : cards }</div>}
+					<Blocks data={JSON.parse(text)}/>
+				</div>}
+			{cards && <div className={`section__cards ${styles.cards}`}>{isGallery ? <Slider items={cards}/> : cards}</div>}
 			{media && <div className={`section__media ${styles.media}`}>{media}</div>}
 			{children && children}
-			{text && text}
+
 		</main>
 	);
 };
 
-export const MainProduct = ({ children, sidebar,upTitle, header,breadcrumbs, headingH1,  nextLink = false, shortText, media, text, cards, action, className = "", isGallery = false }: SectionProps) => {
+export const MainProduct = ({ children, sidebar, upTitle, header, breadcrumbs, headingH1, nextLink = false, shortText, media, text, cards, action, className = "", isGallery = false }: SectionProps) => {
 
-return (
+	return (
 		<main className={`${styles.mainProduct} ${className}`}>
 			{breadcrumbs && breadcrumbs}
-			{nextLink && <NextSectionLink />}
+			{nextLink && <NextSectionLink/>}
 			{upTitle && <div className={'section__upTitle'}>{upTitle}</div>}
 			{headingH1 && <div className={'section__title'}>{headingH1}</div>}
 			{sidebar && sidebar}
 			{header && <h2 className={'section__title'}>{header}</h2>}
 			{shortText && typeof shortText == "string" ?
-				<div className={`section__shortText ${styles.shortText}`} dangerouslySetInnerHTML={{__html: shortText}}/> : shortText && <div className={`section__shortText ${styles.shortText}`} >{shortText}</div>}			{text && <div className={`section__text ${styles.text}`}  dangerouslySetInnerHTML={{__html: text}}/> }
-			{cards && <div className={`section__cards ${styles.cards}`}><SliderProduct items={cards} /></div>}
+				<div className={`section__shortText ${styles.shortText}`}
+					dangerouslySetInnerHTML={{ __html: shortText }}/> : shortText && <div className={`section__shortText ${styles.shortText}`}>{shortText}</div>} {text &&
+			<div className={`section__text ${styles.text}`}
+				dangerouslySetInnerHTML={{ __html: text }}/>}
+			{cards && <div className={`section__cards ${styles.cards}`}>
+				<div className={`section__cards_wrapper`}><SliderProduct items={cards}/></div>
+			</div>}
 			{media && <div className={`section__media ${styles.media}`}>{media}</div>}
 			{children && children}
 		</main>

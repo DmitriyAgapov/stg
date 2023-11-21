@@ -54,7 +54,7 @@ export interface ProductCard extends CardParams {
 
 		}
 	} | any
-	properties: any
+	properties?: any
 }
 
 const Card = observer(({id, title, headingVariant = HeadingVariants.h2, mousePath = true,  text, style, img, link, action = false, imglogo, ...props }: CardParams) => {
@@ -115,9 +115,6 @@ const Card = observer(({id, title, headingVariant = HeadingVariants.h2, mousePat
 			<ArrowRightSvg />
 		</NextLink> : title && <Heading type={headingVariant}  className={'card__title'} text={title}/>}
 		{text && <div className={'card__text'}><Blocks data={JSON.parse(text)}/></div>}
-
-
-		{/*{img && <div className={'card__img'}>{img}</div>}*/}
 		{img && img.url && (
 			// @ts-ignore
 			img.url && <div className={'card__img'}>

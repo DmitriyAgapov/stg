@@ -22,14 +22,15 @@ const CalcResult = observer((props) => {
     const result = toJS(store.booksStore.calcResult.data[0])?.result;
     const serie = toJS(store.booksStore.calcResult.data[0])?.series;
     const category = toJS(store.booksStore.calcResult.data[0])?.product_category;
+
     useEffect(() => {
-        console.log(store.booksStore.calc)
+
         if(store.booksStore.calc.size && store.booksStore.calc.variant) {
             store.booksStore.getResult(router.locale)
         } else {
             store.booksStore.getResult(router.locale)
         }
-    }, [store.booksStore, store.booksStore.calc])
+    }, [store.booksStore, store.booksStore.calc, router.locale])
 
     const ResultTable = () => {
         if (result) return <div className={'result__table'}>
@@ -37,8 +38,8 @@ const CalcResult = observer((props) => {
                 (<div className={'result__row'} key={item.id}>
                     <h3>{item.place}</h3>
                     <div className={'result__products'}>
-                        {item.item.map((subitem) => (
-                            <div className={'result__product'}>
+                        {item.item.map((subitem: any, index: string) => (
+                            <div key={subitem.id + index} className={'result__product'}>
                                 <div className={'result__material'}>
                                     <Link href={`/catalog/${subitem?.product.slug}`}>{subitem.product.slug}</Link>
                                 </div>

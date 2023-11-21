@@ -48,6 +48,7 @@ function SectionNews(props: { header: any, className: string, cards: any[], Link
 		{/*		alt={''}/>*/}
 		{/*</div>}*/}
 		<SideBar className={"news"}
+			linksstyle={"darkOutline"}
 			links={props.Links}
 			// @ts-ignore
 			nav={data?.cats?.data}/>

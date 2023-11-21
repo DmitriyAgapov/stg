@@ -1,0 +1,11 @@
+.tab_bar {
+  position: relative;
+  &:before {
+	content: '';
+	height: 1px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	@apply bg-gray-500;
+  }
+}

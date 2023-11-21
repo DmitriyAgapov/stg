@@ -6,15 +6,19 @@ import {getData} from "@/utils/getData";
 import { queryMenu } from "@/utils/queries/menu";
 import { createContext } from "react";
 import { useStore } from "@/store";
-export const MobxContext =  createContext(null)
-type AppMenuProps = { menu: any }
-export default function MyApp({ Component, pageProps, menu }: AppProps & AppMenuProps) {
+import { useRouter } from "next/router";
 
-    const store = useStore(pageProps.initialState);
+export const MobxContext =  createContext(null)
+
+type AppMenuProps = { menu: any }
+
+export default function MyApp({ Component, pageProps, menu }: AppProps & AppMenuProps) {
+    const router = useRouter();
+    const store = useStore();
     return (
-      <NextUIProvider>
+      <NextUIProvider navigate={router.push}>
           <MobxContext.Provider value={store}>
-            <Layout locale={pageProps.locale} seo={pageProps?.data?.seo || {
+            <Layout seo={pageProps?.data?.seo || {
                 metaDescription: "def",
                 metaTitle: "def",
                 keywords: "def"

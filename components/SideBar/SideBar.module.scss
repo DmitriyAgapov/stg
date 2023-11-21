@@ -2,6 +2,7 @@
   display: block;
   grid-column: 2/span 4;
   grid-row: 1/2;
+
 }
 .left {
   grid-column: 2/span 3;
@@ -10,8 +11,18 @@
 	margin-bottom: 2.5rem;
 	margin-top: 0;
   list-style: none;
-  padding-left: 0;
 
+  @media screen and (max-width: 1279px){
+
+  }
+  @media screen and (max-width: 1279px){
+	display: flex;
+	position: relative;
+	padding-left: 0;
+	gap: 1rem;
+	overflow: auto;
+
+  }
   li {
 	margin: 0;
 	&:first-child {

@@ -208,10 +208,10 @@ class BooksStore implements BooksStoreProps {
 	}
 	setActiveSlideIndex = (activeIndex:number) => {
 		this.activeSlideIndex = activeIndex;
-		console.log(this.activeSlideIndex)
+		// console.log(this.activeSlideIndex)
 	}
 	get activeIndex() {
-		console.log(this.activeSlideIndex)
+		// console.log(this.activeSlideIndex)
 		return this.activeSlideIndex
 	}
 	get activeImageBgIndex() {

@@ -3,10 +3,45 @@
  * * This hook returns the viewport/window height and width
  */
 'use client'
-import { MutableRefObject, useEffect, useRef, useState } from 'react';
+import { JSX, MutableRefObject, useEffect, useRef, useState } from 'react';
 import { useRouter } from "next/router";
+export const newShade = (hexColor, magnitude) => {
+	hexColor = hexColor.replace(`#`, ``);
+	if (hexColor.length === 6) {
+		const decimalColor = parseInt(hexColor, 16);
+		let r = (decimalColor >> 16) + magnitude;
+		r > 255 && (r = 255);
+		r < 0 && (r = 0);
+		let g = (decimalColor & 0x0000ff) + magnitude;
+		g > 255 && (g = 255);
+		g < 0 && (g = 0);
+		let b = ((decimalColor >> 8) & 0x00ff) + magnitude;
+		b > 255 && (b = 255);
+		b < 0 && (b = 0);
+		return `#${(g | (b << 8) | (r << 16)).toString(16)}`;
+	} else {
+		return hexColor;
+	}
+};
+export const fullPath = ({ product_category, series, item }: { product_category: { title: string, slug: string}, series: {title: string, slug: string}[], item: {title: string, slug: string} }):[] => {
 
+	const newPath = [];
+	if(product_category && product_category.title) {
+		newPath.push({
+			label: product_category.title.toLowerCase().charAt(0).toUpperCase() + product_category.title.toLowerCase().slice(1),
+			path: { pathname: '/catalog/[category]', query: { category: product_category.slug } }}
 
+		)
+	}
+	if(series && series.length > 0 && series[0].slug) {
+		newPath.push({
+			label: series[0].title,
+			path: { pathname: '/catalog/series/[slug]', query: { slug: series[0].slug } }}
+		)
+	}
+	newPath.push({ label: item.title.toLowerCase().charAt(0).toUpperCase() + item.title.toLowerCase().slice(1), path: item.slug })
+	return newPath
+}
 type WindowDimentions = {
 	width: number | undefined;
 	height: number | undefined;
@@ -16,7 +51,7 @@ type WindowDimentions = {
 
 export const isServer = typeof window === 'undefined';
 
-export const backUrl =  process.env.BACK_URL;
+export const backUrl =  (isServer ? process.env.BACK_URL : process.env.NEXT_PUBLIC_BACK_URL);
 export const resolutionQuality =  (width:number) => {
 
 	const videoSize = [ 240, 360, 480, 720, 1080, 1440, 2160 ];

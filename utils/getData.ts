@@ -1,7 +1,6 @@
-import { flattenEntityResponse } from "strapi-flatten-graphql";
 import { simplifyResponse } from "@/utils/gql";
 
-export const urlApi = (typeof window === "undefined") ? process.env.GRAPHQL_API : process.env.NEXT_PUBLIC_GRAPHQL_API;
+export const urlApi = (typeof window === "undefined") ? process.env.GRAPHQL_API : process.env.NEXT_PUBLIC_GRAPHQL_API || 'http://127.0.0.1:1337/graphql';
 
 export const getData = async (query = "",  variables: {}) => {
 

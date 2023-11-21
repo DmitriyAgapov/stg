@@ -1,48 +1,62 @@
 import styles from './Footer.module.scss';
 import { Logo } from "@/components/Header/Header";
 import Link from "next/link";
-import Image from "next/image";
 import Social from "@/components/Social";
+import {Card, CardBody} from "@nextui-org/react";
+import { useRouter } from "next/router";
 
 const Footer = ({ menu, ...props }:any) => {
+	const router = useRouter()
+	const Menu = () => {
+		const elements = menu.map(i => <div key={i.id} className={styles.col}>
+			<h4>{i.title}</h4>
+			<ul>
+				{i.items.map((li: {
+					id: string
+					path: string
+					title: string
+				}) => {
+
+					li.path.replace('/#',"");
+
+					if(li.path.includes('mailto:')) {
+
+						let tempPath = li.path;
+						const ar = tempPath.split('/')
+						return  <li key={li.id}>
+							<a href={`${ar[ar.length - 1]}`}
+								className={'hover-2'}>{li.title}</a></li>
+					}
+
+					return <li key={li.id}>
+						<Link href={`${li.path.replace('/#',"")}`}
+							className={'hover-2'}>{li.title}</Link></li>
+				})}
+			</ul>
+		</div>)
+		return elements
+	}
 
 	return (
 		<footer className={styles.container}>
-			<Logo/>
-			<div className={styles.sidebar}>
-				{menu.map(i => <div key={i.id} className={styles.col}>
-					<h4>{i.title}</h4>
-					<ul>
-						{i.items.map(li => <li key={li.id}>
-							<Link href={`${li.path}`}>{li.title}</Link></li>
-							)}
-					</ul>
-				</div>)}
-
-				<div className={styles.col}>
-					<h4>Компания</h4>
-					<ul>
-						<li><Link href={'#'}>О компании</Link></li>
-						<li><Link href={'#'}>Партнёрам</Link></li>
-						<li><Link href={'/blog'}>Блог</Link></li>
-						<li><Link href={'#'}>Контакты</Link></li>
-						<li><Link href={'#'}>Вопросы и ответы</Link></li>
-					</ul>
-				</div>
-				<div className={styles.col}>
-					<h4>Контакты</h4>
-					<ul>
-						<li><Link href={'#'}>+7 (3513) 25-00-82</Link></li>
-						<li><Link href={'#'}>+7 (3513) 25-00-83</Link></li>
-						<li><Link href={'#'}>+7 (3513) 25-00-84</Link></li>
-						<li><Link href={'#'}>Подбор материалов</Link></li>
-					</ul>
-					<Social/>
-				</div>
+			<div className={styles.firstCol}>
+				<Logo/>
 
 			</div>
+			<Social key={'social'} className={'social_footer'}/>
+			<div className={styles.sidebar}>
+				<Menu />
+			</div>
+			<div className={styles.bottomRow}>
+
+				<div className={"md:flex justify-between items-center"}>
+					<Link href={'/policy'}>Политика конфиденциальности</Link>
+					<p>{router.locale === "ru" ? `Группа компаний «Standart-group»` : `The "Standart-group" company group`}{`@ 2004 — ${new Date().getFullYear()} `}</p>
+				</div>
+			</div>
+
 		</footer>
-);
+	);
 };
 
 export default Footer;

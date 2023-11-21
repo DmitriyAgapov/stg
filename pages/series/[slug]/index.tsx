@@ -1,23 +1,15 @@
-import Blocks from 'editorjs-blocks-react-renderer';
 import Heading, { HeadingVariants } from "@/components/ui/Heading";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Section from "@/components/Section";
 import { Main} from "@/components/Section/Section";
-import { Select, SelectItem } from "@nextui-org/react";
 import testData from '@/utils/testData.json'
 import Image from "next/image";
-import Card, { CardNews } from "@/components/Cards/Card/Card";
-import useFormattedDate from "@/utils";
 import React from "react";
-import FormQuestions from "@/components/Form";
-import CardProduct from "@/components/Cards/CardProduct";
-import { SideBarCatalog } from "@/components/SideBar/SideBar";
 import { getData } from "@/utils/getData";
 import { querySerieLocale, querySeries, querySeriesLocale } from "@/utils/queries/series";
 import { useRouter } from "next/router";
 import CardDefault from "@/components/Cards/CardDefault/CardDefault";
 import { I18NConfig } from "next/dist/server/config-shared";
-import { queryProducts } from "@/utils/queries/products";
 
 // @ts-ignore
 export default function SeriePage({data}) {
@@ -27,6 +19,7 @@ export default function SeriePage({data}) {
 	return (<>
 		<Main
 			className={'page-series'}
+			indexEl={0}
 			breadcrumbs={
 			<Breadcrumbs
 				items={[ { label: router.locale === "ru" ? 'Каталог' : "Product catalog", path: "/catalog" }, { label: data.title, path: data.slug } ]} />
@@ -49,29 +42,6 @@ export default function SeriePage({data}) {
 			// sidebar={<SideBarCatalog items={testData.data["production-props"]} />}
 			cards={data.products}
 		/>
-		{/*<Section header={'Аксессуары'}*/}
-		{/*	className={'accessories'}*/}
-		{/*	isGallery={true}*/}
-		{/*	shortText={'Инструмент, СИЗ, разное'}*/}
-		{/*	cards={testData.data.sections.news.cards.map((card) => <CardNews key={card.id}*/}
-		{/*			headingVariant={HeadingVariants.h4}*/}
-		{/*			img={card.image}*/}
-		{/*			title={card.title}*/}
-		{/*			style={card.style}*/}
-		{/*			link={`/news${card.slug}`}>*/}
-		{/*			/!* eslint-disable-next-line react-hooks/rules-of-hooks *!/*/}
-		{/*			<div className={'card__date'}>{useFormattedDate(card.publishedTime)}</div>*/}
-		{/*			<div className={'card__tags'}>{card.tags.map((tag, index) => <span key={index} className={'card__tag'}>{tag.text}</span> )}</div>*/}
-		{/*		</CardNews>*/}
-		{/*	)}>*/}
-		{/*</Section>*/}
-		{/*	<Section*/}
-		{/*		className={'form-questions '}*/}
-		{/*		header={'Остались вопросы?'}*/}
-		{/*		shortText={'Напишите нам, с Вами свяжутся в течении нескольких часов. Мы знаем ответ на ваш вопрос'}*/}
-		{/*	>*/}
-		{/*		<FormQuestions />*/}
-		{/*	</Section>*/}
 		</>
 	)
 }
@@ -92,8 +62,8 @@ export async function getStaticPaths({ locales }: I18NConfig) {
 		fallback: false,
 	}
 }
-export async function getStaticProps(props: {locale:string, params: { slug:string }}) {
 
+export async function getStaticProps(props: {locale:string, params: { slug:string }}) {
 
 	const { data } = await getData(querySerieLocale,  {
 		locale: props.locale,

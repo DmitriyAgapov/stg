@@ -1,0 +1,21 @@
+.cardwithcounter {
+  @apply border-gray-400 m-0 gap-4;
+  h3 {
+    margin-bottom: .5rem;
+    @apply font-normal text-md text-black font-semibold lowercase ;
+  }
+  &:before {
+    content:  counters(list-item, ".") " ";
+    @apply text-primary text-3xl font-bold;
+  }
+  li {
+
+  }
+}
+
+.cardbox {
+  @apply border-gray-400 p-6 border;
+  h3 {
+    margin-bottom: .5rem;
+  }
+}

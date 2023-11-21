@@ -1,37 +1,31 @@
-import React, { useRef, useEffect, useState } from "react";
-import DG from "2gis-maps";
+import React from "react";
 
-function Map({ options = {}, width, height }) {
-    const elRef = useRef();
-    const [map, setMap] = useState(null);
+const [ymaps3React] = await Promise.all([ymaps3.import('@yandex/ymaps3-reactify'), ymaps3.ready]);
+const reactify = ymaps3React.reactify.bindTo(React, ReactDOM);
+const {YMap, YMapDefaultSchemeLayer, YMapControls} = reactify.module(ymaps3);
+import { type YMapLocationRequest } from 'ymaps3';
+const {YMapZoomControl} = reactify.module(await ymaps3.import('@yandex/ymaps3-controls@0.0.1'));
 
-    useEffect(() => {
-        let innerMap = map;
-        if (!innerMap) {
-            innerMap = DG.map(elRef.current, options);
-            setMap(innerMap);
-        } else {
-            innerMap.setView(options.center, options.zoom);
-        }
+export default function NewMap() {
+    const [show, toggleShow] = React.useState(true);
 
-        const handleClick = e => console.log(e);
-
-        innerMap.addEventListener("click", handleClick);
-
-        return () => {
-            innerMap.removeEventListener("click", handleClick);
-        };
-    }, [map, elRef, options]);
 
     return (
-        <div
-            ref={elRef}
-            style={{
-                width: `${width}px`,
-                height: `${height}px`
-            }}
-        />
+        <>
+            <div className="toolbar">
+                <button type="button" onClick={() => toggleShow(!show)}>
+                    {show ? 'Delete map' : 'Create map'}
+                </button>
+            </div>
+            {show && (
+                // @ts-ignore
+                <YMap location={[55.102050, 60.126901]} ref={(x) => (map = x)}>
+                    <YMapDefaultSchemeLayer />
+                    <YMapControls position="right">
+                        <YMapZoomControl />
+                    </YMapControls>
+                </YMap>
+            )}
+        </>
     );
 }
-
-export default React.memo(Map);

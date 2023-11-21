@@ -1,2 +1,4 @@
-import { ProductPart, SeoPart, SeriesPartNoSeo } from "@/utils/queries/fragments";
+import { ImagePart, ProductPart, SeoPart, SeriesPartNoSeo } from "@/utils/queries/fragments";
 export const queryProducts = `${ProductPart}${SeoPart} query Products($slug: String, $locale: I18NLocaleCode) { products(locale: $locale, filters: { series: { slug: { eq: $slug } } }) { meta { __typename pagination { page total pageCount pageSize } } data { ...ProductPart attributes { seo { ...SeoPart } } } } }`
+export const queryProduct = `${ProductPart}${SeoPart} query ProductPage($locale: I18NLocaleCode, $slug: String) { products(locale: $locale, filters: { slug: { eq: $slug } }) { __typename data { attributes { seo { ...SeoPart } } ...ProductPart } } }`
+export const queryProductsCategory = `${ProductPart}${SeoPart} query ProductsCategory($locale: I18NLocaleCode, $slug: String) { productCategories(locale: $locale, filters: { slug: { eq: $slug } }) { __typename data { __typename id attributes { __typename title text slug shortText products { data { ...ProductPart } } seo { ...SeoPart } } } } }`
