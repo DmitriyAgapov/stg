@@ -34,9 +34,13 @@ const CardDefault = ({ title, headingVariant = HeadingVariants.h2, mousePath = t
 			// @ts-ignore
 			imglogo.url && <div className={'card__imglogo absolute top-0 bottom-4 flex right-4'}>
 				<Image
-					// @ts-ignore className={'relative my-auto'}
+					// @ts-ignore
+					className={'relative my-auto'}
+					// @ts-ignore
 					src={process.env.NEXT_PUBLIC_BACK_URL + imglogo.url}
+					// @ts-ignore
 					width={imglogo.width}
+					// @ts-ignore
 					height={imglogo.height}
 					alt={''}/>
 			</div>)}
