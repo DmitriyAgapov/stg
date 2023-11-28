@@ -24,8 +24,7 @@ function SectionRelated(props: any) {
 	// }, [store]);
 	// console.log(props.cards[4].product_category.title)
 	// @ts-ignore
-
-	const cardsAr = props.cards.map(card => <CardSimpleProduct key={card.id}
+	const cardsAr = props.cards.map((card:any) => <CardSimpleProduct key={card.id}
 		headingVariant={HeadingVariants.h4}
 		img={card.images[0]}
 		title={card.title}
@@ -57,13 +56,14 @@ function SectionRelated(props: any) {
 		{/*		height={(className !== "about") && background?.height}*/}
 		{/*		alt={''}/>*/}
 		{/*</div>}*/}
-		<SideBar className={"news"}
+		{props.Links[0]?.url ? <SideBar
+			className={"news"}
 			// @ts-ignore
-			links={{ pathname: '/catalog/[category]', query: { category: props.Links[0].url } }}
+			links={{ pathname: '/catalog/[category]', query: { category: props.Links[0]?.url } }}
 			// @ts-ignore
-			linktitle={props.Links[0].text}
-		  pathname={'/catalog/[category]'} query={{ category: props.Links[0].url  }}
-			/>
+			linktitle={props.Links[0]?.text}
+		  pathname={'/catalog/[category]'} query={{ category: props.Links[0]?.url  }}
+			/> : null}
 	</section>
 
 

@@ -12,8 +12,7 @@ import { useStore } from "@/store";
 import { toJS } from "mobx";
 import Link from "next/link";
 import { num_plural } from "@/utils/utils";
-import { translateText } from "@/utils/translate";
-import { ChevronRightSvg } from "@/components/Icons";
+import { translateText } from "@/utils/translate";;
 
 
 const CalcResult = observer((props) => {
@@ -55,7 +54,9 @@ const CalcResult = observer((props) => {
             }</div>
     }
 
-    return <ResultTable result={result}/>
+    return <ResultTable
+        // @ts-ignore
+        result={result}/>
 })
 
 const ResultSection = observer((props: { data: any })  => {

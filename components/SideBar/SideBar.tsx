@@ -48,9 +48,11 @@ const SideBar = ({className, nav, links,  linksstyle, ...props }:NewsProps) => {
 						href={l.url }>{l.text}
 					</StgButton>
 			// <StgButton key={l.id} as={Link} color={"outline"} href={l.url}>{l.text}</StgButton>
-)}</div> : links && links.query !== undefined && <StgButton as={NextLink}
+)}</div> : // @ts-ignore
+			links && links.query !== undefined && <StgButton as={NextLink}
 			className={"flex-1"} key={'button'}
 			size={"sm"} variant={"darkOutline"} color={linksstyle ?? "outline"}
+			// @ts-ignore
 			href={links}>{props.linktitle}
 		</StgButton>}
 	</nav>;

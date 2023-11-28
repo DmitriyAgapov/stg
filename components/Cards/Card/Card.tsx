@@ -30,8 +30,10 @@ export interface CardParams {
 	link?: string;
 	text?: string | any;
 	style?: string;
+	description?: string;
 	title?: string ;
-	img?:  ImageDefault | undefined
+	slug?: string ;
+	img?:  any
 	children?: ReactNode | imageBgProps
 	action?: any
 	mousePath?: boolean
@@ -40,6 +42,7 @@ export interface CardParams {
 	headingVariant?:  HeadingVariants
 }
 export interface ProductCard extends CardParams {
+	class?: string
 	series?: {
 		title: string,
 		slug: string,
@@ -131,7 +134,7 @@ const Card = observer(({id, title, headingVariant = HeadingVariants.h2, mousePat
 		</div>)}
 
 
-		{/*{props.children && props.children}*/}
+		{props.children && props.children}
 
 	</div> ;
 })

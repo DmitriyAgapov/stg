@@ -2,13 +2,13 @@ import styles from './Footer.module.scss';
 import { Logo } from "@/components/Header/Header";
 import Link from "next/link";
 import Social from "@/components/Social";
-import {Card, CardBody} from "@nextui-org/react";
 import { useRouter } from "next/router";
 
 const Footer = ({ menu, ...props }:any) => {
 	const router = useRouter()
 	const Menu = () => {
-		const elements = menu.map(i => <div key={i.id} className={styles.col}>
+		return menu.map((i:any) => <div key={i.id}
+			className={styles.col}>
 			<h4>{i.title}</h4>
 			<ul>
 				{i.items.map((li: {
@@ -17,24 +17,23 @@ const Footer = ({ menu, ...props }:any) => {
 					title: string
 				}) => {
 
-					li.path.replace('/#',"");
+					li.path.replace('/#', "");
 
-					if(li.path.includes('mailto:')) {
+					if (li.path.includes('mailto:')) {
 
 						let tempPath = li.path;
 						const ar = tempPath.split('/')
-						return  <li key={li.id}>
+						return <li key={li.id}>
 							<a href={`${ar[ar.length - 1]}`}
 								className={'hover-2'}>{li.title}</a></li>
 					}
 
 					return <li key={li.id}>
-						<Link href={`${li.path.replace('/#',"")}`}
+						<Link href={`${li.path.replace('/#', "")}`}
 							className={'hover-2'}>{li.title}</Link></li>
 				})}
 			</ul>
 		</div>)
-		return elements
 	}
 
 	return (

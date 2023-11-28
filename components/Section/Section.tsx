@@ -1,5 +1,5 @@
 import styles from './Section.module.scss';
-import React, { JSX, ReactChild, ReactElement, ReactNode, useId } from "react";
+import React, { JSX, ReactElement, ReactNode } from "react";
 import Slider from "@/components/Slider";
 import NextSectionLink from "@/components/ui/NextSectionLink/NextSectionLink";
 import { SliderProduct } from "@/components/Slider/SliderProduct/SliderProduct";
@@ -11,17 +11,15 @@ import Image from 'next/image';
 import CardProduct from "@/components/Cards/CardProduct";
 import { useRouter } from "next/router";
 import TextBlockRenderer from "@/components/ui/TextBlockRenderer/TextBlockRenderer";
-import { CardNews, ImageDefault } from '../Cards/Card/Card';
+import { ImageDefault } from '../Cards/Card/Card';
 import FormQuestions from "@/components/Form";
-import useFormattedDate from "@/utils";
-import SideBar from "@/components/SideBar";
-import testData from "@/utils/testData.json";
 import SectionNews from "@/components/Section/SectionNews";
 import SectionRelated from "@/components/Section/SectionRelated";
 import { CalcCard, CalcCardVariant } from "@/components/Calc/Calc";
 import StgButton from "@/components/ui/StgButton";
 import NextLink from "next/link";
-import { CardBox, CardsListWithCounter, CardWithCounter } from "@/components/Cards/CardSimple/CardSimple";
+import { CardBox, CardsListWithCounter } from "@/components/Cards/CardSimple/CardSimple";
+import CardProductSmallCard from "@/components/Cards/CardProduct/CardProductSmallCard";
 // @ts-ignore
 const VideoOnlyClient = dynamic((props) => import('@/components/Video'), {
 	ssr: false,
@@ -43,12 +41,14 @@ export interface SectionProps {
 	series?: any
 	indexEl?: number
 	Links?: any[]
+	products?: any[]
 	className?: string
+	id?: string
 	media?: ReactNode | {
 
 		name: string
 		mime?: string
-		url: string
+		url?: string
 	}
 	background?: {
 
@@ -61,7 +61,7 @@ export interface SectionProps {
 }
 
 
-const Section = ({ header, Links, children, breadcrumbs, indexEl, nextLink = false, headingH1, shortText, media, background, text, cards, action, className = "", sidebar, isGallery = false, ...props }: SectionProps) => {
+const Section = ({ header, Links, children, breadcrumbs, indexEl, id, nextLink = false, headingH1, shortText, media, background, text, cards, action, className = "", sidebar, isGallery = false, ...props }: SectionProps) => {
 	const cardsAr = [];
 	const router = useRouter()
 	const childrenArray = [ children ];
@@ -90,7 +90,7 @@ const Section = ({ header, Links, children, breadcrumbs, indexEl, nextLink = fal
 			break;
 
 		case 'geography':
-			cards.forEach((c) => cardsAr.push(
+			cards.forEach((c:any) => cardsAr.push(
 				<Card headingVariant={HeadingVariants.h4}
 					key={c.id}
 					title={c.text}
@@ -119,6 +119,22 @@ const Section = ({ header, Links, children, breadcrumbs, indexEl, nextLink = fal
 					</CardProduct>)
 			});
 			break;
+		case 'products':
+			props.products?.forEach((i:any) => {
+				cardsAr.push(<CardProductSmallCard title={i.title}
+						key={i.id}
+						// @ts-ignore
+						style={' card_vertical card-product'}
+						properties={{
+							variants: i.variants,
+							class: i.class,
+							place: i.place,
+							type: i.product_category
+						}}
+						series={i.series}
+						headingVariant={HeadingVariants.h3}
+						img={i.images[0]}
+						link={i.slug}/>)})
 
 		case 'page-catalog-category':
 			cards.forEach((i: any) => {
@@ -195,7 +211,7 @@ const Section = ({ header, Links, children, breadcrumbs, indexEl, nextLink = fal
 			break;
 	}
 	return (
-		<section className={`section ${styles.container} ${className}`}>
+		<section className={`section ${styles.container} ${className}`} id={id}>
 			{breadcrumbs && breadcrumbs}
 			{nextLink && <NextSectionLink indexEl={indexEl}/>}
 			{headingH1 && headingH1}
@@ -204,13 +220,25 @@ const Section = ({ header, Links, children, breadcrumbs, indexEl, nextLink = fal
 			{shortText ? <div className={`section__shortText`}><TextBlockRenderer text={shortText}/></div> : null}
 			{text && <div className={`section__text ${styles.text}`}><TextBlockRenderer text={text}/></div>}
 			{(cardsAr && cardsAr.length > 0) && <div className={`section__cards ${styles.cards}`}>{isGallery ? <Slider items={cardsAr}/> : cardsAr}</div>}
-			{media && <div className={`section__media ${styles.media && styles.media}`}>{media?.mime.indexOf('video') === 0 ?
-				<VideoOnlyClient src={process.env.NEXT_PUBLIC_BACK_URL + media?.url}/> : null}</div>}
-			{background && background && <div className={`section__media ${styles.media && styles.media}`}>
+			{media && <div className={`section__media ${styles.media && styles.media}`}>
+
+				{
+					// @ts-ignore
+					media?.mime.indexOf('video') === 0 ?
+				<VideoOnlyClient
+					// @ts-ignore
+					src={process.env.NEXT_PUBLIC_BACK_URL
+					// @ts-ignore
+					+ media?.url}/> : null}</div>}
+			{background && background &&
+				// @ts-ignore
+				<div className={`section__media ${styles.media && styles.media}`}>
 				<Image style={{ objectFit: "cover", width: "100%" }}
 					src={process.env.NEXT_PUBLIC_BACK_URL + background?.url}
 					fill={className === "about"}
+					// @ts-ignore
 					width={(className !== "about") && background?.width}
+					// @ts-ignore
 					height={(className !== "about") && background?.height}
 					alt={''}/>
 			</div>}
@@ -228,6 +256,8 @@ export const Main = ({ children, sidebar, upTitle, indexEl, header, breadcrumbs,
 		color={"outline"}
 		href={l.url}>{l.text}</StgButton>)}</div>
 
+	// @ts-ignore
+	// @ts-ignore
 	return (
 		<main className={`${styles.mainPage + " " + " "} ${className}`}>
 			{breadcrumbs && breadcrumbs}
@@ -237,14 +267,20 @@ export const Main = ({ children, sidebar, upTitle, indexEl, header, breadcrumbs,
 			{sidebar && sidebar}
 			{header && <h2 className={'section__title'}>{header}</h2>}
 			{shortText && <div className={`section__shortText ${styles.shortText}`}>
-				<Blocks data={JSON.parse(shortText)}/></div>}
+				<Blocks
+					// @ts-ignore
+					data={JSON.parse(shortText)}/></div>}
 			<AllLinks/>
 			{text &&
 				<div className={`section__text ${styles.text}`}>
-					<Blocks data={JSON.parse(text)}/>
+					<Blocks
+						// @ts-ignore
+						data={JSON.parse(text)}/>
 				</div>}
 			{cards && <div className={`section__cards ${styles.cards}`}>{isGallery ? <Slider items={cards}/> : cards}</div>}
-			{media && <div className={`section__media ${styles.media}`}>{media}</div>}
+			{media
+				// @ts-ignore
+				&& <div className={`section__media ${styles.media}`}>{media}</div>}
 			{children && children}
 
 		</main>
@@ -269,7 +305,9 @@ export const MainProduct = ({ children, sidebar, upTitle, header, breadcrumbs, h
 			{cards && <div className={`section__cards ${styles.cards}`}>
 				<div className={`section__cards_wrapper`}><SliderProduct items={cards}/></div>
 			</div>}
-			{media && <div className={`section__media ${styles.media}`}>{media}</div>}
+			{media &&
+				// @ts-ignore
+				<div className={`section__media ${styles.media}`}>{media}</div>}
 			{children && children}
 		</main>
 	);

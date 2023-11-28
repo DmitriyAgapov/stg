@@ -11,7 +11,7 @@ const StgCheckBox = extendVariants(Checkbox, {
 		},
 	},
 	defaultVariants: { // <- modify/add default variants
-
+// @ts-ignore
 		size: "xl",
 	},
 	compoundVariants: [ // <- modify/add compound variants

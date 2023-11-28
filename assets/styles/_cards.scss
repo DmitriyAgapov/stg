@@ -304,3 +304,103 @@
     @apply text-primary text-3xl font-bold;
   }
 }
+.card_vertical.card-product {
+  grid-template-rows: min-content;
+  max-height: 380px;
+  grid-column: span 4;
+  @apply xl:col-span-3;
+  height: 100%;
+  .card__title {
+    padding-top: 2rem;
+    display: block;
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+    &:before {
+      transition: all .25s .35s ease-in-out;
+      content: 'Подробнее';
+      position: absolute;
+      @apply bg-primary;
+      color: white;
+      padding: 0.25rem .75rem;
+      width: 8rem;
+      border-top-right-radius: 12px;
+      //left: -2rem;
+      margin-top: -2.5rem;
+      text-align: center;
+      transform: translate(-150%, 0);
+    }
+  }
+  position: relative;
+  & > *:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    z-index: -2;
+    right: 0;
+    bottom: 0;
+    /* background: red; */
+    /* height: max-content; */
+    opacity: .1;
+
+  }
+  grid-template-columns: initial;
+  .card__container {
+    display: block;
+    overflow: hidden;
+    grid-template-columns: initial;
+    transition: all .25s ease-in-out;
+  }
+  .card__img{
+    aspect-ratio: 280/230;
+    height: 230px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .slidePanel {
+    opacity: 1;
+    max-height: 300px;
+    height: 100%;
+    transform: translateY(-300px);
+    transition: all 0.15s ease-in-out;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+
+
+  }
+  &:hover {
+    img {
+      scale: initial;
+    }
+  }
+  &[data-sp="true"]:hover {
+    .card__title {
+      &:before {
+        transition: all .25s .35s ease-in-out;
+        transform: translate(0, 0);
+      }
+    }
+    & > *:before {
+      opacity: 1;
+    }
+
+    transition: all .15s ease-in-out;
+    img {
+      scale: initial;
+    }
+    .card__container {
+      transform: translateY(-149px);
+      border-bottom-color: transparent;
+      transition: all .15s ease-in-out;
+      padding-bottom: 0;
+    }
+    .slidePanel {
+      transform: translateY(-150px);
+      transition: all .15s ease-in-out;
+      border: 1px solid rgb(209 213 219 / 1);
+    }
+  }
+}

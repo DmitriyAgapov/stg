@@ -59,7 +59,7 @@ export async function getStaticPaths({ locales }: I18NConfig) {
 
 	return  {
 		paths: paths,
-		fallback: false,
+		fallback: 'blocking',
 	}
 }
 

@@ -17,10 +17,12 @@ export const ProdSection = ({ children, header, shortText, media, text, cards, a
 				cards={cards}
 
 				background={imgBackground}
-				// onMouseLeave={() => setBackground(null)}
+				onMouseLeave={() => setBackground(null)}
 				// onMouseOver={handleOver}
 			/>
-			{media && <div className={`section__media ${styles.media}`}>{media}</div>}
+			{media &&
+				// @ts-ignore
+				<div className={`section__media ${styles.media}`}>{media}</div>}
 			{children && children}
 		</section>
 	);

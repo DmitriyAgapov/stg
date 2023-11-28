@@ -9,7 +9,7 @@ import { ProductCard } from "@/components/Cards/Card/Card";
 import {Image} from "@nextui-org/react";
 import NextImage from "next/image";
 
-const CardUI = ({ title, series, headingVariant = HeadingVariants.h2, properties, mousePath = true, text, style, img, link, action, locale, ...props }: ProductCard) => {
+const CardUI = ({ title, series, headingVariant = HeadingVariants.h2, properties, mousePath = true, text, style, img, link, action, locale,  ...props }: ProductCard) => {
     console.log('img',properties)
     return <Card className={styles.CardUI} {...props} radius={"none"} shadow={"none"}>
         <CardHeader>

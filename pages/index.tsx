@@ -1,15 +1,11 @@
 import React from "react";
 import Section from "@/components/Section/Section";
-import type { APIResponse, APIResponseCollection, APIResponseCollectionMetadata, APIResponseData, GetValue,GetValues } from "@/types/types";
-import testData from '@/utils/testData.json'
 import { getData } from "@/utils/getData";
-import { queryCatalogPage, queryMainPage } from "@/utils/queries/pageQuery";
-import FormQuestions from "@/components/Form";
+import {  queryMainPage } from "@/utils/queries/pageQuery";
 import { HeadingVariants } from "@/components/ui/Heading";
-import { CardNews } from "@/components/Cards/Card/Card";
-import useFormattedDate from "@/utils";
-import SideBar from "@/components/SideBar";
+import CardProductSmallCard from "@/components/Cards/CardProduct/CardProductSmallCard";
 export default function Home(props:any) {
+    const related = props.data.sections.filter((sect:any) => sect.type === 'products')
 
     return (
         <>
@@ -22,6 +18,7 @@ export default function Home(props:any) {
                     shortText={section.shortText}
                     nextLink={section.nextLink}
                     indexEl={index == 0 ? 1 : undefined}
+                    products={section.products}
                     // @ts-ignore
                     Links={section.Links}
                     media={section.media}
@@ -30,7 +27,7 @@ export default function Home(props:any) {
                     background={section.background}
                 />
             })}
-
+            <section className={'section Section_container__mkPCF'}></section>
 
             {/*<Section className={about.class}*/}
             {/*    header={about.header}*/}
@@ -67,15 +64,16 @@ export default function Home(props:any) {
             {/*    media={<Image src={geography.media}*/}
             {/*        alt={''}/>}/>*/}
 
-            {/*<ProdSection className={products.class}*/}
-            {/*    header={products.header}*/}
-            {/*    shortText={products.shortText}*/}
+            {/*<ProdSection className={'products'}*/}
+            {/*    header={'Каталог Продукции'}*/}
+            {/*    // shortText={products.shortText}*/}
             {/*    // @ts-ignore*/}
 
             {/*    cards={products.cards.map((i) => ({*/}
             {/*        ...i,*/}
             {/*        headingVariant: HeadingVariants.h3*/}
-            {/*    }))}/>*/}
+            {/*    }))}*/}
+            {/*/>*/}
             {/*<Section*/}
             {/*    header={testData.data.sections.news.header}*/}
             {/*    className={"news"}*/}

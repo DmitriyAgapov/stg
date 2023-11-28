@@ -1,5 +1,6 @@
 import { Button, extendVariants } from "@nextui-org/react";
 
+
 const StgButton = extendVariants(Button, {
 	variants: {
 
@@ -26,7 +27,9 @@ const StgButton = extendVariants(Button, {
 		},
 	},
 	defaultVariants: { // <- modify/add default variants
-		color: "primary",
+		// @ts-ignore
+		outlined: "primary",
+		// @ts-ignore
 		size: "md",
 	},
 	compoundVariants: [ // <- modify/add compound variants

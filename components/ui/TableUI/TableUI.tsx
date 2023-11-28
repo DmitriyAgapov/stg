@@ -28,6 +28,7 @@ const TableUI = ({items}: {items: VariantProps[]}):any => {
 		function CellsTable ({ key, value } : { key: string, value: any }) {
 			const cells: JSX.Element[] = []
 			cells.push(<TableCell className={"bg-gray-300 py-4 px-3  font-bold capitalize"} key={key}>{translateText(key)}</TableCell>)
+			// @ts-ignore
 			items.forEach((i) =>  cells.push(<TableCell className={"bg-white py-4 px-3"} key={i.thickness}>{i[key] ? i[key] : "-"}</TableCell>))
 			return <TableRow key={key} >{cells}</TableRow>
 		}
@@ -36,6 +37,7 @@ const TableUI = ({items}: {items: VariantProps[]}):any => {
 
 		keys.forEach((key) => {
 			if(key !== "id" && key !== "thickness") {
+				// @ts-ignore
 				rowsTable.push(CellsTable({ key: key}))
 			}
 		})

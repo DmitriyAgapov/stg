@@ -19,7 +19,7 @@ function SectionNews(props: { header: any, className: string, cards: any[], Link
 		store.booksStore.lastNews(router.locale)
 			.then((r: any) => setData(r));
 	}, [store]);
-
+// @ts-ignore
 	const cardsAr = data?.news?.post.map(card => <CardNews key={card.id}
 		headingVariant={HeadingVariants.h4}
 		img={card.image}

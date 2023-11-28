@@ -1,9 +1,12 @@
 import styles from './Slider.module.scss';
+// @ts-ignore
 import { Swiper, SwiperSlide } from 'swiper/react';
+// @ts-ignore
 import { Autoplay, Controller } from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
+// @ts-ignore
 import { Pagination } from 'swiper/modules';
 import { EventHandler, useEffect, useId, useState } from "react";
 

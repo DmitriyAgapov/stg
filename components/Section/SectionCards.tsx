@@ -27,7 +27,7 @@ export const SectionCards = observer((props: {background?: any, cards: ReactNode
 	if(props.cards)
 		return <div className={`section__cards ${styles.cards}`}
 			data-bgsrc={props.background}
-			// style={{backgroundImage: `url(${props.background})`}}
+			style={{backgroundImage: `url(${props.background})`}}
 
 			// ref={cardsRef}
 		>

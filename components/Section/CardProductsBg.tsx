@@ -12,7 +12,9 @@ export const CardProductsBg = observer((props: { card: CardParams, img: boolean,
 		<Image
 			// @ts-ignore
 			src={process.env.NEXT_PUBLIC_BACK_URL + props.card.image.url}
+			// @ts-ignore
 			width={props.card.image.width}
+			// @ts-ignore
 			height={props.card.image.height}
 			alt={""}/>
 	</div>;

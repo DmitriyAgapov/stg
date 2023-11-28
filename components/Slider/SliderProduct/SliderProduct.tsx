@@ -2,7 +2,7 @@ import styles from './SliderProduct.module.scss';
 import React, { useEffect, useState } from 'react';
 // @ts-ignore
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-import ArrowLeftIcon from ""
+
 // @ts-ignore
 import { Controller, Navigation, Pagination, Thumbs, FreeMode } from 'swiper/modules';
 
@@ -21,14 +21,14 @@ export const SliderProduct = ({ items }: any) => {
 	const swiper = useSwiper();
 	const [ thumbs, setThumbs ] = useState(null);
 	const [ controlledSwiper, setControlledSwiper ] = useState(null);
-	const handleNext = (event: number) => {
+	const handleNext = (event: React.MouseEvent<HTMLDivElement>) => {
 		// @ts-ignore
 		if (controlledSwiper) {
 			// @ts-ignore
 			controlledSwiper.slideNext();
 		}
 	}
-	const handlePrev = (event: number) => {
+	const handlePrev = (event: React.MouseEvent<HTMLDivElement>) => {
 		if (controlledSwiper) {
 			// @ts-ignore
 			controlledSwiper.slidePrev();

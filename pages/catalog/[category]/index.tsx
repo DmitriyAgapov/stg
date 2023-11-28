@@ -153,7 +153,7 @@ export async function getStaticPaths({ locales }: I18NConfig) {
 	})
 	return  {
 		paths: paths,
-		fallback: false,
+		fallback: 'blocking',
 	}
 }
 export async function getStaticProps(props: {locale:string, params: { category:string }}) {

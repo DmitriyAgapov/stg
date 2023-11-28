@@ -33,19 +33,21 @@ function HeaderMenu(props: {
 
 		items.forEach((item:any) => {
 			if (item.items.length > 0) {
-				rootMenu.push(<NavbarItem><Button disableRipple
+				rootMenu.push(<NavbarItem onClick={props.onClick}><Button disableRipple
 					className="p-0 bg-transparent lg:text-sm text-lg data-[hover=true]:bg-transparent"
 					endContent={props.icons.chevron}
 					radius="sm"
 					variant="light"
+					onClick={props.onClick}
 					onMouseEnter={props.onMouseEnter}>
 					<Link className={styles.links + " " + "lg:text-md text-lg"}
 						as={NextLink}
+						onClick={props.onClick}
 						href={item.path}
 						aria-current="page">{item.title}</Link></Button></NavbarItem>)
 				submenu = item.items;
 			} else {
-				rootMenu.push(<NavbarItem><Link className={styles.links + " " + "text-lg lg:text-md  font-semibold"}
+				rootMenu.push(<NavbarItem onClick={props.onClick}><Link onClick={props.onClick} className={styles.links + " " + "text-lg lg:text-md  font-semibold"}
 					as={NextLink}
 					href={item.path}
 					aria-current="page">{item.title}</Link></NavbarItem>)
@@ -58,7 +60,7 @@ function HeaderMenu(props: {
 		}
 	}
 	const TopMenu = () => menuContent(props.items).root;
-	const subMenu = menuContent(props.items).submenu.map(it => ({ ...it, child: it.items.map(i => ({ ...i, url: i.path.replace('#/', '') })), }));
+	const subMenu = menuContent(props.items).submenu.map(it => ({ ...it, child: it.items.map((i:any) => ({ ...i, url: i.path.replace('#/', '') })), }));
 
 	return <>
 		<HeaderNewMenu items={subMenu}
@@ -76,7 +78,7 @@ function HeaderMenu(props: {
 			</NavbarItem></li>
 		</HeaderNewMenu>
 
-		<NavbarContent className="hidden lg:flex gap-6 justify-between lg:col-span-4  m-0 p-0 w-full">
+		<NavbarContent className="hidden lg:flex gap-6 justify-between lg:col-span-4  m-0 p-0 w-full" >
 			<TopMenu/>
 		</NavbarContent>
 	</>;

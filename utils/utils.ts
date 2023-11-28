@@ -5,7 +5,7 @@
 'use client'
 import { JSX, MutableRefObject, useEffect, useRef, useState } from 'react';
 import { useRouter } from "next/router";
-export const newShade = (hexColor, magnitude) => {
+export const newShade = (hexColor: string, magnitude: number) => {
 	hexColor = hexColor.replace(`#`, ``);
 	if (hexColor.length === 6) {
 		const decimalColor = parseInt(hexColor, 16);
@@ -40,6 +40,7 @@ export const fullPath = ({ product_category, series, item }: { product_category:
 		)
 	}
 	newPath.push({ label: item.title.toLowerCase().charAt(0).toUpperCase() + item.title.toLowerCase().slice(1), path: item.slug })
+	// @ts-ignore
 	return newPath
 }
 type WindowDimentions = {

@@ -10,7 +10,11 @@ export const DropDownMenu = ( props:{heading?:string | any, first?: boolean, men
         <div  className={`inner_menu`}>
             <Heading className={'text-2lg xl:text-base text-gray-500 text-medium capitalize mb-4'} text={props.heading} type={HeadingVariants.h4}/>
             <ul className={'list-none pl-0'} {...props}>
-                {props.menuItems?.map(item => <li key={item.id} className={'my-3 lg:my-1.5 py-0'}>
+
+                {
+
+                    // @ts-ignore
+                    props.menuItems?.map(item => <li key={item.id} className={'my-3 lg:my-1.5 py-0'}>
                     <NextLink  className={'font-semibold text-gray-900'}  href={`/catalog/${item.link}`}>{props.locale === "ru" ? item.attributes.title : item.attributes.title_en}</NextLink></li>)}
             </ul>
         </div>

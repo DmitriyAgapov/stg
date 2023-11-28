@@ -13,6 +13,7 @@ function Video(props:any) {
 				muted
 				loop
 				playing
+				// @ts-ignore
 				wrapper={'span'}
 				// playbackRate={0.5}
 			/>
