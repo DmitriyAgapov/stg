@@ -15,7 +15,7 @@ import { I18NConfig } from "next/dist/server/config-shared";
 export default function SeriePage({data}) {
 
 	const router = useRouter()
-
+	console.log(data)
 	return (<>
 		<Main
 			className={'page-series'}
@@ -24,10 +24,10 @@ export default function SeriePage({data}) {
 			<Breadcrumbs
 				items={[ { label: router.locale === "ru" ? 'Каталог' : "Product catalog", path: "/catalog" }, { label: data.title, path: data.slug } ]} />
 		}
-			upTitle={router.locale === "ru" ? 'Серия' : "Series"}
+			upTitle={data.series && (router.locale === "ru" ? 'Серия' : "Series")}
 			nextLink={true}
 			headingH1={<Heading className={'text-secondary2'} type={HeadingVariants.h1} text={data.title}/>}
-			media={data.image.url && <Image src={process.env.NEXT_PUBLIC_BACK_URL + data.image.url} height={testData.data.series[0].image.height} width={testData.data.series[0].image.width} alt={''}/>}
+			media={data.image && data.image.url && <Image src={process.env.NEXT_PUBLIC_BACK_URL + data.image.url} height={testData.data.series[0].image.height} width={testData.data.series[0].image.width} alt={''}/>}
 			shortText={data.description}
 			cards={data.Features.map((card:any) => <CardDefault key={card.id}
 					headingVariant={HeadingVariants.h4}
@@ -38,7 +38,7 @@ export default function SeriePage({data}) {
 			)}
 		/>
 		<Section className={'page-serie'}
-			header={'Продукция'}
+			header={router.locale === "ru" ? 'Продукция' : "Products"}
 			// sidebar={<SideBarCatalog items={testData.data["production-props"]} />}
 			cards={data.products}
 		/>
@@ -47,16 +47,26 @@ export default function SeriePage({data}) {
 }
 
 export async function getStaticPaths({ locales }: I18NConfig) {
-	const { data }  = await getData(querySeries,  {})
+	const  dataEn   = await getData(querySeries,  {
+		locale: "en"
+	})
+	const dataRu  = await getData(querySeries,  {
+		locale: "ru"
+	})
+	console.log(dataRu)
 	const paths: {params: { slug: string}, locale: string}[] = [];
-	data.forEach((v:any) => {
+
+	dataEn.data.forEach((v:any) => {
 		paths.push({
 			params: { slug: v.slug}, locale: "en"
-		}, {
+		})
+	})
+	dataRu.data.forEach((v:any) => {
+		paths.push({
 			params: { slug: v.slug}, locale: "ru"
 		})
 	})
-
+	console.log('paths', paths)
 	return  {
 		paths: paths,
 		fallback: 'blocking',

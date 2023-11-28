@@ -6,7 +6,7 @@ import { HeadingVariants } from "@/components/ui/Heading";
 import CardProductSmallCard from "@/components/Cards/CardProduct/CardProductSmallCard";
 export default function Home(props:any) {
     const related = props.data.sections.filter((sect:any) => sect.type === 'products')
-
+    console.log(props.data.sections[3])
     return (
         <>
             {props.data.sections.map((section:any, index: number) => {

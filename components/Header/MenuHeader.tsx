@@ -77,7 +77,7 @@ export function MenuHeader(props: { onClick: () => void, items: any }) {
 
 }
 export  const HeaderNewMenu = (props: any) => <NavbarMenu className={"" +
-    "lg:max-h-56 overflow-hidden lg:top-[5.25rem] list-none backdrop-blur-none backdrop-filter-none  backdrop-saturate-0 bg-background border-t-1 fixed left-0 right-0 top-[48px] " + styles.containerMenu}
+    "lg:max-h-60 overflow-hidden lg:top-[5.25rem] list-none backdrop-blur-none backdrop-filter-none  backdrop-saturate-0 bg-background border-t-1 fixed left-0 right-0 top-[48px] " + styles.containerMenu}
     style={{ boxShadow: "0px 30px 100px 0px rgba(0, 0, 0, 0.35)" }}
     onClick={props.onClick}
     onMouseLeave={props.onClick}>
@@ -91,7 +91,7 @@ export  const HeaderNewMenu = (props: any) => <NavbarMenu className={"" +
                             // console.log(i)
                             i.url.replace('/#',"");
                             return (<li key={i.id} className={'my-3 lg:my-1.5 py-0 relative max-w-fit'}>
-                            <NextLink  className={'font-semibold text-gray-900  lg:text-md text-lg    hover-2 '}  href={`${i.url}`}>{i.title.toLowerCase().charAt(0).toUpperCase() + i.title.toLowerCase().slice(1)}</NextLink></li>)})}
+                            <NextLink  className={'font-semibold text-gray-900  lg:text-md text-lg hover-2 !leading-none    '}  href={`${i.url}`}>{i.title.toLowerCase().charAt(0).toUpperCase() + i.title.toLowerCase().slice(1)}</NextLink></li>)})}
                     </ul>
                 </div>
             </NavbarMenuItem>)}
@@ -99,7 +99,7 @@ export  const HeaderNewMenu = (props: any) => <NavbarMenu className={"" +
     {props.children && props.children}
     <NavbarMenuItem className={'hidden lg:block'}>
         <Button
-            className="p-0 bg-transparent self-center hidden stg-button border-primary h-[80px] font-bold border-2 data-[hover=true]:bg-primary data-[hover=true]:text-white lg:!col-start-11 flex lg:col-span-2 "
+            className="p-0 bg-transparent self-center  stg-button border-primary h-[80px] font-bold border-2 data-[hover=true]:bg-primary data-[hover=true]:text-white lg:!col-start-11 flex lg:col-span-2 "
             radius="sm"
             variant="light"
             href={"/catalog"}

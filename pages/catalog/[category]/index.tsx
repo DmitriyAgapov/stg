@@ -110,7 +110,7 @@ export default function CategoryPage({data, ...props}:any) {
 
 	</Main>
 		<Section className={'page-catalog-category'}
-			header={'Продукция'}
+			header={router.locale === "ru" ? 'Продукция' : "Products"}
 			// sidebar={<SideBarCatalog items={testData.data["production-props"]} />}
 			cards={data.products}
 		/>
@@ -135,25 +135,28 @@ export default function CategoryPage({data, ...props}:any) {
 }
 
 export async function getStaticPaths({ locales }: I18NConfig) {
-	const { data }  = await getData('query { products { data { attributes { slug product_category { data { attributes { slug } } } } } } }',  {})
+
+	const dataEn  = await getData('query { productCategories(locale: "en") { data { attributes { slug  } } } }',  {})
+	const dataRu  = await getData('query { productCategories(locale: "ru") { data { attributes { slug  } } } }',  {})
 	const paths: { params: { category: string }, locale: string}[] = [];
-	const uniqueSlus = data.reduce((acc: string | any[], item: { product_category: { slug: any; }; }) =>  {
-		if(acc.includes(item.product_category.slug)) {
-			return acc;
-		}
-		// @ts-ignore
-		return [...acc, item.product_category.slug]
-	}, [])
-	uniqueSlus.forEach((v:any) => {
+	console.log(dataEn)
+	console.log(dataRu)
+
+
+	dataEn.data.forEach((v:any) => {
 		paths.push({
-			params: { category: v }, locale: "en"
-		}, {
-			params: { category: v }, locale: "ru"
+			params: { category: v.slug }, locale: "en"
 		})
 	})
+	dataRu.data.forEach((v:any) => {
+		paths.push({
+			params: { category: v.slug }, locale: "ru"
+		})
+	})
+	console.log(paths)
 	return  {
 		paths: paths,
-		fallback: 'blocking',
+		fallback: "blocking",
 	}
 }
 export async function getStaticProps(props: {locale:string, params: { category:string }}) {

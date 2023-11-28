@@ -277,7 +277,7 @@ export const Main = ({ children, sidebar, upTitle, indexEl, header, breadcrumbs,
 						// @ts-ignore
 						data={JSON.parse(text)}/>
 				</div>}
-			{cards && <div className={`section__cards ${styles.cards}`}>{isGallery ? <Slider items={cards}/> : cards}</div>}
+			{(cards && cards.length > 0) && <div className={`section__cards ${styles.cards}`}>{isGallery ? <Slider items={cards}/> : cards}</div>}
 			{media
 				// @ts-ignore
 				&& <div className={`section__media ${styles.media}`}>{media}</div>}

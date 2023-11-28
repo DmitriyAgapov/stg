@@ -81,8 +81,8 @@ const FormReviews = () => {
 						className={" "}
 						classNames={{
 							base: "text-gray-500 text-base",
-							input: "text-lg",
-							inputWrapper: " rounded-none !h-full p-4 focus:border-primary",
+							input: "",
+							inputWrapper: " rounded-none !h-full py-3 px-4 focus:border-primary",
 							mainWrapper: " rounded-none"
 						}}
 						// 	classNames={{
@@ -112,8 +112,8 @@ const FormReviews = () => {
 						errorMessage={errors.phone && touched.phone && <div>{errors.phone}</div>}
 					classNames={{
 						base: "text-gray-500 text-base",
-						input: "text-lg",
-						inputWrapper: " rounded-none !h-full p-4 focus:border-primary",
+						input: "",
+						inputWrapper: " rounded-none !h-full py-3 px-4 focus:border-primary",
 						mainWrapper: " rounded-none"
 					}}/>
 	<Field
@@ -129,8 +129,8 @@ const FormReviews = () => {
 						errorMessage={errors.phone && touched.phone && <div>{errors.phone}</div>}
 		classNames={{
 			base: "text-gray-500 text-base",
-			input: "text-lg",
-			inputWrapper: " rounded-none !h-full p-4 focus:border-primary",
+			input: "",
+			inputWrapper: " rounded-none !h-full py-3 px-4 focus:border-primary",
 			mainWrapper: " rounded-none"
 		}}/>
 
@@ -140,8 +140,8 @@ const FormReviews = () => {
 						className="!h-full lg:col-start-2 lg:row-start-1 lg:row-end-4 border-primary"
 						classNames={{
 							base: "text-gray-500 text-base",
-							input: "text-lg",
-							inputWrapper: " rounded-none !h-full p-4  focus:border-primary",
+							input: "",
+							inputWrapper: " rounded-none !h-full py-3 px-4 focus:border-primary",
 							mainWrapper: " rounded-none"
 						}}/>
 					<CheckboxGroup
@@ -159,12 +159,12 @@ const FormReviews = () => {
 						<Field as={Checkbox} key={"privacy"} type={"checkbox"}  name={"privacy"}  classNames={{
 							icon: "w-6 h-5",
 							wrapper: "h-8 w-8 mr-3 mb-0.5 ",
-							label: "font-[600] text-gray-500 text-md"
+							label: "font-[600] text-gray-500 text-sm"
 						}}   size={"lg"} value="privacy">Я согласен на обработку персональных данных</Field>
 						<Field as={Checkbox}  key={"agreed"} type={"checkbox"} name={"agreed"}  classNames={{
 							icon: "w-6 h-5",
 							wrapper: "h-8 w-8 mr-3 mb-0.5",
-							label: "font-[600]  text-gray-500 text-md"
+							label: "font-[600] text-gray-500 text-sm"
 						}}   size={"lg"}  value="public">Разрешить публиковать ваш отзыв</Field>
 
 					</CheckboxGroup>

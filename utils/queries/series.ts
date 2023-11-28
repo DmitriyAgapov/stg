@@ -1,6 +1,6 @@
 import { ProductPart, SeoPart, SeriePart, SeriePartLocale } from "@/utils/queries/fragments";
 
-export const querySeries = `query Series{series{data{attributes{slug}}}}`
+export const querySeries = `query Series($locale: I18NLocaleCode){series(locale: $locale){data{attributes{slug}}}}`
 export const querySerie = `
 ${SeoPart}
 ${SeriePart}
